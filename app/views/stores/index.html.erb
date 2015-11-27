@@ -1,0 +1,37 @@
+<h2>lojas</h2>
+
+<div class="table-responsive">
+  <table class="table table-hover table-condensed">
+    <tr>
+      <th width="70%">nome</th>
+      <th width="15%">latitude</th>
+      <th width="15%">longitude</th>
+      <th width="16px"></th>
+      <th width="16px"></th>
+      <th width="16px"></th>
+    </tr>
+
+    <% if @stores.any? %>
+        <% @stores.each do |store| %>
+            <tr>
+              <td><%= store.name %></td>
+              <td><%= store.latitude %></td>
+              <td><%= store.longitude %></td>
+              <td><%= link_to (fa_icon 'eye').to_s, store_path(store) %></td>
+              <td><%= link_to (fa_icon 'pencil').to_s, edit_store_path(store) %></td>
+              <td><%= link_to (fa_icon 'trash').to_s, store_path(store), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+            </tr>
+        <% end %>
+    <% else %>
+        <tr class="text-center">
+          <td colspan="5">Nenhuma loja encontrado.</td>
+        </tr>
+    <% end %>
+  </table>
+
+  <div class="text-center">
+    <%= paginate @stores %>
+  </div>
+</div>
+
+<%= link_to (fa_icon 'plus').to_s, new_store_path, :class => 'btn btn-primary' %>

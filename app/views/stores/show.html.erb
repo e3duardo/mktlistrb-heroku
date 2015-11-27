@@ -1,0 +1,22 @@
+<p>
+  <strong>nome:</strong>
+  <%= @store.name %>
+</p>
+
+<p>
+  <strong>descrição:</strong>
+  <%= @store.description %>
+</p>
+
+<p>
+  <strong>latitude:</strong>
+  <%= @store.latitude %>
+</p>
+
+<p>
+  <strong>longitude:</strong>
+  <%= @store.longitude %>
+</p>
+
+<%= link_to (fa_icon 'pencil').to_s, edit_store_path(@store), :class => 'btn btn-primary' %>
+<%= link_to (fa_icon 'arrow-left').to_s, stores_path, :class => 'btn btn-default' %>

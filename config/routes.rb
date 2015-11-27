@@ -54,5 +54,10 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
+  # get 'welcome/index'
   root 'welcome#index'
+
+  resources :stores
+  resources :products
+  resources :prices
 end

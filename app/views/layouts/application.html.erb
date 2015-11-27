@@ -1,14 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <title>Mktlistrb</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>mktlist</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<%- # container       -%>
+<div class="container">
+  <div class="header clearfix">
+    <div class="text-muted">
+      <h3 class="pull-left" style="margin-right: 10px">
+        <%= link_to 'mktlist', root_path %>
+      </h3>
+    </div>
+    <nav>
+      <ul class="nav nav-pills pull-right">
+        <li role="presentation"><%= link_to 'loja', stores_path %></li>
+        <li role="presentation"><%= link_to 'produto', products_path %></li>
+        <li role="presentation"><%= link_to 'precos', new_price_path %></li>
+      </ul>
+    </nav>
+  </div>
+
+  <%= yield %>
+
+  <footer class="footer">
+    <p>&copy; mktlist 2015</p>
+  </footer>
+</div>
+<%- # container  -%>
 
 </body>
 </html>

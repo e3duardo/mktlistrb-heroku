@@ -1,28 +1,66 @@
-== README
+************
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+rake routes
 
-Things you may want to cover:
+rails server
 
-* Ruby version
+# create controller
+rails generate controller articles
 
-* System dependencies
+# create model
+rails generate model Article title:string text:text
 
-* Configuration
+# migrate
+rake db:migrate
+rake db:migrate RAILS_ENV=production
 
-* Database creation
+rake db:seed
 
-* Database initialization
+rake db:setup
+rake db:reset
 
-* How to run the test suite
+#comments
+rails generate model Comment commenter:string body:text article:references
+rails generate controller Comments
 
-* Services (job queues, cache servers, search engines, etc.)
+rails generate scaffold Todo title:string notes:text
 
-* Deployment instructions
+#add and remove from migrations
+rails generate migration AddDetailsToProducts part_number:string price:decimal
+rails generate migration RemovePartNumberFromProducts part_number:string
+rails generate migration CreateProducts name:string part_number:string
+rails generate migration AddDetailsToProducts 'price:decimal{5,2}' supplier:references{polymorphic}
 
-* ...
+    3.5 Column Modifiers
+    Column modifiers can be applied when creating or changing a column:
+        -limit Sets the maximum size of the string/text/binary/integer fields.
+        -precision Defines the precision for the decimal fields, representing the total number of digits in the number.
+        -scale Defines the scale for the decimal fields, representing the number of digits after the decimal point.
+        -polymorphic Adds a type column for belongs_to associations.
+        -null Allows or disallows NULL values in the column.
+        -default Allows to set a default value on the column. Note that if you are using a dynamic value (such as a date), the default will only be calculated the first time (i.e. on the date the migration is applied).
+        -index Adds an index for the column.
+        -required Adds required: true for belongs_to associations and null: false to the column in the migration.
+
+    3.8 Using the change Method
+    The change method is the primary way of writing migrations. It works for the majority of cases, where Active Record knows how to reverse the migration automatically. Currently, the change method supports only these migration definitions:
+        add_column
+        add_index
+        add_reference
+        add_timestamps
+e (must supply a block)
+        drop_join_table (must supply a block)        add_foreign_key
+                                                     create_table
+                                                     create_join_table
+                                                     drop_tabl
+        remove_timestamps
+        rename_column
+        rename_index
+        remove_reference
+        rename_table
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+        bootstrap
+        http://www.gotealeaf.com/blog/integrating-rails-and-bootstrap-part-1/
+
+        <%= fa_icon "camera-retro" %>
