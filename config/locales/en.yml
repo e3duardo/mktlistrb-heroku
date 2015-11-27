@@ -21,3 +21,10 @@
 
 en:
   hello: "Hello world"
+  views:
+      pagination:
+        first: "<i class='fa fa-fast-backward'></i>"
+        previous: "<i class='fa fa-step-backward'></i>"
+        next: "<i class='fa fa-step-forward'></i>"
+        last: "<i class='fa fa-fast-forward'></i>"
+        truncate: "..."
