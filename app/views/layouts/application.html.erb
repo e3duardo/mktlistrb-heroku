@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<%- # container        -%>
+<%- # container         -%>
 <div class="container">
   <div class="header clearfix">
     <div class="text-muted">
@@ -23,10 +23,14 @@
     </div>
     <nav>
       <ul class="nav nav-pills pull-right">
-        <li role="presentation" class="<%= 'active' if params[:controller] == 'stores' %>"><%= link_to 'loja', stores_path %></li>
-        <li role="presentation" class="<%= 'active' if params[:controller] == 'products' %>"><%= link_to 'produto', products_path %></li>
-        <li role="presentation" class="<%= 'active' if params[:controller] == 'prices' %>"><%= link_to 'preços', new_price_path %></li>
-        <li role="presentation" ><%= link_to 'lista', root_path , :class => 'btn btn-info-outline' %></li>
+        <li role="presentation" class="<%= 'active' if params[:controller] == 'stores' %>">
+          <%= link_to 'loja', stores_path %></li>
+        <li role="presentation" class="<%= 'active' if params[:controller] == 'products' %>">
+          <%= link_to 'produto', products_path %></li>
+        <li role="presentation" class="<%= 'active' if params[:controller] == 'prices' %>">
+          <%= link_to 'preços', new_price_path %></li>
+        <li role="presentation" class="<%= 'active' if params[:controller] == 'lists' %>">
+          <%= link_to 'lista', lists_path, :class => 'btn btn-info-outline' %></li>
       </ul>
     </nav>
   </div>
@@ -37,7 +41,7 @@
     <p>&copy; mktlist-server 2015</p>
   </footer>
 </div>
-<%- # container   -%>
+<%- # container    -%>
 
 <%= yield :script %>
 

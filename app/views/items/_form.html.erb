@@ -1,0 +1,32 @@
+<%= form_for @item, html: {class: "form-inline"} do |f| %>
+
+    <% if @item.errors.any? %>
+        <div id="error_explanation" class="well-sm bg-danger" style="margin-bottom: 20px">
+          <h4>
+            <%= @item.errors.count %>
+            <%= 'erro precisa ser corrigido' if @item.errors.count == 1 %>
+            <%= 'erros precisam ser corrigidos' if @item.errors.count > 1 %>
+          </h4>
+          <ul class="item-unstyled">
+            <% @item.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group form-group-sm">
+      <%= f.label :product, 'produto', :class => 'control-label sr-only' %>
+      <%= f.text_field :product, :class => 'form-control', :required => true, :placeholder => 'produto' %>
+    </div>
+
+    <div class="form-group form-group-sm">
+      <%= f.label :price, 'preço', :class => 'control-label sr-only' %>
+      <div class="input-group">
+        <div class="input-group-addon">R$</div>
+        <%= f.number_field :price, :class => 'form-control', :step => 0.05, :required => true, :placeholder => 'preço' %>
+      </div>
+    </div>
+
+    <%= button_tag((fa_icon 'plus').to_s, type: 'submit', :class => 'btn btn-default') %>
+<% end %>

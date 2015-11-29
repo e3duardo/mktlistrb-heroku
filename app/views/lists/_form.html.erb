@@ -1,0 +1,26 @@
+<%= form_for @list do |f| %>
+
+    <% if @list.errors.any? %>
+        <div id="error_explanation" class="well-sm bg-danger" style="margin-bottom: 20px">
+          <h4>
+            <%= @list.errors.count  %>
+            <%= 'erro precisa ser corrigido' if @list.errors.count == 1 %>
+            <%= 'erros precisam ser corrigidos' if @list.errors.count > 1 %>
+          </h4>
+          <ul class="list-unstyled">
+            <% @list.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group form-group-sm">
+      <%= f.label :name, 'nome', :class => 'control-label' %>
+      <%= f.text_field :name, :class => 'form-control', :required => true %>
+    </div>
+
+    <div class="hr"></div>
+    <%= button_tag((fa_icon 'floppy-o').to_s, type: 'submit', :class => 'btn btn-primary') %>
+    <%= link_to (fa_icon 'arrow-left').to_s, lists_path, :class => 'btn btn-default' %>
+<% end %>

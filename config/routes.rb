@@ -60,4 +60,7 @@ Rails.application.routes.draw do
   resources :stores
   resources :products
   resources :prices
+
+  resources :lists
+  resources :items
 end

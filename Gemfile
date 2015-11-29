@@ -52,3 +52,8 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-rails', '~> 4.5'
 
 gem 'kaminari'
+
+
+gem 'rails4-autocomplete'
+# jQuery UI dependency.
+gem 'jquery-ui-rails'
