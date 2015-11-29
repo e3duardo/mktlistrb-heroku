@@ -15,5 +15,5 @@
 //= require jquery-ui
 //= require autocomplete-rails
 //= require turbolinks
-//= require bootstrap-sprocket
+//= require bootstrap-sprockets
 //= require_tree .
