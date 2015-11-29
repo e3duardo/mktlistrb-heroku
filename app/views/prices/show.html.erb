@@ -4,14 +4,16 @@
 </p>
 
 <p>
-  <strong>store:</strong>
+  <strong>loja:</strong>
   <%= @price.store.name %>
 </p>
 
 <p>
-  <strong>price:</strong>
+  <strong>preço:</strong>
   <%= number_to_currency(@price.price, unit: 'R$ ', separator: ',', delimiter: '') %>
 </p>
 
+
+<div class="hr"> </div>
 <%= link_to (fa_icon 'pencil').to_s, edit_price_path(@price), :class => 'btn btn-primary' %>
 <%= link_to (fa_icon 'arrow-left').to_s, prices_path, :class => 'btn btn-default' %>

@@ -9,3 +9,10 @@
 #   5.times do |i|
 #     Product.create(name: "Product ##{i}", description: "A product.")
 #   end
+35.times do |i|
+  Store.create(name: "Loja ##{i}", description: "Uma loja.")
+end
+
+20.times do |i|
+  Product.create(name: "Produto ##{i}", alias: "Um produto.")
+end

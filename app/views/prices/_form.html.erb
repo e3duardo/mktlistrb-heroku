@@ -1,12 +1,13 @@
 <%= form_for @price do |f| %>
 
     <% if @price.errors.any? %>
-        <div id="error_explanation">
-          <h2>
-            <%= pluralize(@price.errors.count, "error") %> prohibited
-            this price from being saved:
-          </h2>
-          <ul>
+        <div id="error_explanation" class="well-sm bg-danger" style="margin-bottom: 20px">
+          <h4>
+            <%= @price.errors.count %>
+            <%= 'erro precisa ser corrigido' if @price.errors.count == 1 %>
+            <%= 'erros precisam ser corrigidos' if @price.errors.count > 1 %>
+          </h4>
+          <ul class="list-unstyled">
             <% @price.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
             <% end %>
@@ -15,7 +16,7 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.label :product , :class => 'control-label' %>
+      <%= f.label :product, 'produto', :class => 'control-label' %>
       <div class="input-group">
         <%= f.collection_select(:product_id, Product.all, :id, :name, {}, {:class => 'form-control'}) %>
         <span class="input-group-btn">
@@ -25,7 +26,7 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :store , :class => 'control-label' %>
+      <%= f.label :store, 'loja', :class => 'control-label' %>
       <div class="input-group">
         <%= f.collection_select(:store_id, Store.all, :id, :name, {}, {:class => 'form-control'}) %>
         <span class="input-group-btn">
@@ -35,11 +36,14 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :price , :class => 'control-label' %>
-      <%= f.number_field :price, :class => 'form-control' %>
+      <%= f.label :price, 'preço', :class => 'control-label' %>
+      <div class="input-group">
+        <div class="input-group-addon">R$</div>
+        <%= f.number_field :price, :class => 'form-control', :step => 0.05, :required => true %>
+      </div>
     </div>
 
+    <div class="hr"></div>
     <%= button_tag((fa_icon 'floppy-o').to_s, type: 'submit', :class => 'btn btn-primary') %>
     <%= link_to (fa_icon 'arrow-left').to_s, prices_path, :class => 'btn btn-default' %>
-
 <% end %>

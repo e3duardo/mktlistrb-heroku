@@ -1,11 +1,11 @@
-<h2>precos</h2>
+<h2>preços</h2>
 
 <div class="table-responsive">
   <table class="table table-hover table-condensed">
     <tr>
       <th width="35%">produto</th>
       <th width="35%">loja</th>
-      <th width="30%" class="text-right">preco</th>
+      <th width="30%" class="text-right">preço</th>
       <th width="16px"></th>
       <th width="16px"></th>
       <th width="16px"></th>
@@ -32,7 +32,7 @@
   <div class="text-center">
     <%= paginate @prices %>
   </div>
-
 </div>
 
+<div class="hr"></div>
 <%= link_to (fa_icon 'plus').to_s, new_price_path, :class => 'btn btn-primary' %>

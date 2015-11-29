@@ -5,37 +5,41 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>mktlist</title>
+  <title>mktlist-server</title>
+  <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'map', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%- # container       -%>
+<%- # container        -%>
 <div class="container">
   <div class="header clearfix">
     <div class="text-muted">
       <h3 class="pull-left" style="margin-right: 10px">
-        <%= link_to 'mktlist', root_path %>
+        <%= link_to 'mktlist-server', root_path %>
       </h3>
     </div>
     <nav>
       <ul class="nav nav-pills pull-right">
-        <li role="presentation"><%= link_to 'loja', stores_path %></li>
-        <li role="presentation"><%= link_to 'produto', products_path %></li>
-        <li role="presentation"><%= link_to 'precos', new_price_path %></li>
+        <li role="presentation" class="<%= 'active' if params[:controller] == 'stores' %>"><%= link_to 'loja', stores_path %></li>
+        <li role="presentation" class="<%= 'active' if params[:controller] == 'products' %>"><%= link_to 'produto', products_path %></li>
+        <li role="presentation" class="<%= 'active' if params[:controller] == 'prices' %>"><%= link_to 'preços', new_price_path %></li>
+        <li role="presentation" ><%= link_to 'lista', root_path , :class => 'btn btn-info-outline' %></li>
       </ul>
     </nav>
   </div>
 
   <%= yield %>
 
-  <footer class="footer">
-    <p>&copy; mktlist 2015</p>
+  <footer class="footer text-right">
+    <p>&copy; mktlist-server 2015</p>
   </footer>
 </div>
-<%- # container  -%>
+<%- # container   -%>
+
+<%= yield :script %>
 
 </body>
 </html>

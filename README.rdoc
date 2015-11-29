@@ -64,3 +64,5 @@ e (must supply a block)
         http://www.gotealeaf.com/blog/integrating-rails-and-bootstrap-part-1/
 
         <%= fa_icon "camera-retro" %>
+
+        class="<%= 'active' if params[:controller] == 'controller1' %>"

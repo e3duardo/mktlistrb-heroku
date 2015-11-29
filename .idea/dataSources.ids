@@ -13,42 +13,42 @@
       <schema id="2" parent="1" name="public">
         <object-id>2200</object-id>
         <comment>standard public schema</comment>
-        <introspection-state-number>697</introspection-state-number>
-        <introspection-timestamp>2015-11-26.21:46:48.293</introspection-timestamp>
+        <introspection-state-number>847</introspection-state-number>
+        <introspection-timestamp>2015-11-28.17:19:04.811</introspection-timestamp>
       </schema>
       <schema id="3" parent="1" name="pg_catalog">
         <object-id>11</object-id>
         <comment>system catalog schema</comment>
         <introspection-state-number>675</introspection-state-number>
-        <introspection-timestamp>2015-11-26.21:46:48.790</introspection-timestamp>
+        <introspection-timestamp>2015-11-27.09:22:46.437</introspection-timestamp>
       </schema>
       <sequence id="4" parent="2" name="prices_id_seq">
-        <object-id>16423</object-id>
-        <state-number>695</state-number>
+        <object-id>16471</object-id>
+        <state-number>841</state-number>
       </sequence>
       <sequence id="5" parent="2" name="products_id_seq">
-        <object-id>16412</object-id>
-        <state-number>684</state-number>
+        <object-id>16484</object-id>
+        <state-number>845</state-number>
       </sequence>
       <sequence id="6" parent="2" name="stores_id_seq">
-        <object-id>16401</object-id>
-        <state-number>683</state-number>
+        <object-id>16495</object-id>
+        <state-number>847</state-number>
       </sequence>
       <table id="7" parent="2" name="prices">
-        <object-id>16425</object-id>
-        <state-number>697</state-number>
+        <object-id>16473</object-id>
+        <state-number>841</state-number>
       </table>
       <table id="8" parent="2" name="products">
-        <object-id>16414</object-id>
-        <state-number>684</state-number>
+        <object-id>16486</object-id>
+        <state-number>845</state-number>
       </table>
       <table id="9" parent="2" name="schema_migrations">
         <object-id>16394</object-id>
         <state-number>681</state-number>
       </table>
       <table id="10" parent="2" name="stores">
-        <object-id>16403</object-id>
-        <state-number>683</state-number>
+        <object-id>16497</object-id>
+        <state-number>847</state-number>
       </table>
       <table id="11" parent="3" name="pg_aggregate">
         <object-id>2600</object-id>
@@ -19983,44 +19983,44 @@
         <bind-function>bpchariclike|char,text</bind-function>
       </operator>
       <column id="3548" parent="7" name="id">
-        <state-number>685</state-number>
+        <state-number>841</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
-        <default-expression>nextval(&apos;store_products_id_seq&apos;::regclass)</default-expression>
+        <default-expression>nextval(&apos;prices_id_seq&apos;::regclass)</default-expression>
       </column>
       <column id="3549" parent="7" name="store_id">
-        <state-number>685</state-number>
+        <state-number>841</state-number>
         <data-type>integer</data-type>
       </column>
       <column id="3550" parent="7" name="product_id">
-        <state-number>685</state-number>
+        <state-number>841</state-number>
         <data-type>integer</data-type>
       </column>
       <column id="3551" parent="7" name="created_at">
-        <state-number>685</state-number>
+        <state-number>841</state-number>
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
       </column>
       <column id="3552" parent="7" name="updated_at">
-        <state-number>685</state-number>
+        <state-number>841</state-number>
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
       </column>
       <column id="3553" parent="7" name="price">
-        <state-number>697</state-number>
+        <state-number>841</state-number>
         <data-type>numeric</data-type>
       </column>
       <index id="3554" parent="7" name="prices_pkey">
-        <object-id>16429</object-id>
+        <object-id>16480</object-id>
         <columns>id</columns>
         <unique>1</unique>
       </index>
       <index id="3555" parent="7" name="index_prices_on_store_id">
-        <object-id>16431</object-id>
+        <object-id>16483</object-id>
         <columns>store_id</columns>
       </index>
       <index id="3556" parent="7" name="index_prices_on_product_id">
-        <object-id>16432</object-id>
+        <object-id>16482</object-id>
         <columns>product_id</columns>
       </index>
       <key id="3557" parent="7" name="prices_pkey">
@@ -20029,31 +20029,31 @@
         <primary>1</primary>
       </key>
       <column id="3558" parent="8" name="id">
-        <state-number>684</state-number>
+        <state-number>845</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
         <default-expression>nextval(&apos;products_id_seq&apos;::regclass)</default-expression>
       </column>
       <column id="3559" parent="8" name="name">
-        <state-number>684</state-number>
+        <state-number>845</state-number>
         <data-type>varchar</data-type>
       </column>
       <column id="3560" parent="8" name="alias">
-        <state-number>684</state-number>
+        <state-number>845</state-number>
         <data-type>varchar</data-type>
       </column>
       <column id="3561" parent="8" name="created_at">
-        <state-number>684</state-number>
+        <state-number>845</state-number>
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
       </column>
       <column id="3562" parent="8" name="updated_at">
-        <state-number>684</state-number>
+        <state-number>845</state-number>
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
       </column>
       <index id="3563" parent="8" name="products_pkey">
-        <object-id>16421</object-id>
+        <object-id>16493</object-id>
         <columns>id</columns>
         <unique>1</unique>
       </index>
@@ -20073,39 +20073,39 @@
         <unique>1</unique>
       </index>
       <column id="3567" parent="10" name="id">
-        <state-number>683</state-number>
+        <state-number>847</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
         <default-expression>nextval(&apos;stores_id_seq&apos;::regclass)</default-expression>
       </column>
       <column id="3568" parent="10" name="name">
-        <state-number>683</state-number>
+        <state-number>847</state-number>
         <data-type>varchar</data-type>
       </column>
       <column id="3569" parent="10" name="description">
-        <state-number>683</state-number>
+        <state-number>847</state-number>
         <data-type>text</data-type>
       </column>
       <column id="3570" parent="10" name="latitude">
-        <state-number>683</state-number>
+        <state-number>847</state-number>
         <data-type>varchar</data-type>
       </column>
       <column id="3571" parent="10" name="longitude">
-        <state-number>683</state-number>
+        <state-number>847</state-number>
         <data-type>varchar</data-type>
       </column>
       <column id="3572" parent="10" name="created_at">
-        <state-number>683</state-number>
+        <state-number>847</state-number>
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
       </column>
       <column id="3573" parent="10" name="updated_at">
-        <state-number>683</state-number>
+        <state-number>847</state-number>
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
       </column>
       <index id="3574" parent="10" name="stores_pkey">
-        <object-id>16410</object-id>
+        <object-id>16504</object-id>
         <columns>id</columns>
         <unique>1</unique>
       </index>

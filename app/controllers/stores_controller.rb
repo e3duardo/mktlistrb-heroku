@@ -1,6 +1,11 @@
 class StoresController < ApplicationController
   def index
-    @stores = Store.order('name').page(params[:page]).per(10)
+    respond_to do |format|
+      format.html do
+        @stores = Store.order('name').page(params[:page]).per(10)
+      end
+      format.json { render :json => Store.all.to_json }
+    end
   end
 
   def show
