@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  autocomplete :product, :name, :full => true
+
   def create
     @item = Item.new(item_params)
     @item.save
