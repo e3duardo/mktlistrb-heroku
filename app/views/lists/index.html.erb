@@ -1,9 +1,10 @@
-<h2>lists</h2>
+<h2>listas</h2>
 
 <div class="table-responsive">
   <table class="table table-hover table-condensed">
     <tr>
-      <th width="100%">nome</th>
+      <th width="70%">nome</th>
+      <th width="30%">loja</th>
       <th width="16px"></th>
       <th width="16px"></th>
       <th width="16px"></th>
@@ -13,6 +14,7 @@
         <% @lists.each do |f| %>
             <tr>
               <td><%= f.name %></td>
+              <td><%= f.store.nil? ? '' : f.store.name %></td>
               <td><%= link_to (fa_icon 'eye').to_s, list_path(f) %></td>
               <td><%= link_to (fa_icon 'pencil').to_s, edit_list_path(f) %></td>
               <td><%= link_to (fa_icon 'trash').to_s, list_path(f), method: :delete, data: {confirm: 'Are you sure?'} %></td>

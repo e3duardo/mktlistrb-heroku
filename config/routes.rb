@@ -62,6 +62,8 @@ Rails.application.routes.draw do
   resources :prices
 
   resources :lists
+
+
   resources :items do
     get :autocomplete_product_name, :on => :collection
   end

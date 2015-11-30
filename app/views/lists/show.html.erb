@@ -8,8 +8,10 @@
   <table class="table table-condensed table-bordered">
     <thead>
     <tr>
-      <th width="70%">produto</th>
-      <th width="30%" class="text-right">preço</th>
+      <th width="60%">produto</th>
+      <th width="13%" class="text-right">preço</th>
+      <th width="7%" class="text-right">qtd</th>
+      <th width="20%" class="text-right">total</th>
       <td width="10px" colspan="2"></td>
     </tr>
     </thead>
@@ -20,8 +22,10 @@
             <tr>
               <td><%= p.product %></td>
               <td class="text-right"><%= number_to_currency(p.price, unit: 'R$ ', separator: ',', delimiter: '') %></td>
-              <td><%= link_to (fa_icon 'pencil').to_s, edit_price_path(p) %></td>
-              <td><%= link_to (fa_icon 'trash').to_s, price_path(p), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+              <td class="text-right"><%=p.amount%></td>
+              <td class="text-right"><%= number_to_currency(p.total, unit: 'R$ ', separator: ',', delimiter: '') %></td>
+              <td><%= link_to (fa_icon 'pencil').to_s, edit_item_path(p) %></td>
+              <td><%= link_to (fa_icon 'trash').to_s, item_path(p), method: :delete, data: {confirm: 'Are you sure?'} %></td>
             </tr>
         <% end %>
     <% else %>
@@ -32,8 +36,7 @@
     </tbody>
     <tfoot>
     <tr>
-      <th></th>
-      <td class="text-right"><%= number_to_currency(@items.sum(:price), unit: 'R$ ', separator: ',', delimiter: '') %></th>
+      <td class="text-right" colspan="4"><%= number_to_currency(@items.sum(:price), unit: 'R$ ', separator: ',', delimiter: '') %></th>
       <td colspan="2"></td>
     </tr>
     </tfoot>

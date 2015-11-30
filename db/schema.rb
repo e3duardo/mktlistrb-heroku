@@ -19,7 +19,9 @@ ActiveRecord::Schema.define(version: 20151129041705) do
   create_table "items", force: :cascade do |t|
     t.integer  "list_id"
     t.string   "product"
-    t.decimal  "price",      precision: 5, scale: 3
+    t.decimal  "price",      precision: 9, scale: 3
+    t.decimal  "amount",     precision: 9, scale: 3
+    t.decimal  "total",      precision: 9, scale: 3
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
@@ -28,14 +30,17 @@ ActiveRecord::Schema.define(version: 20151129041705) do
 
   create_table "lists", force: :cascade do |t|
     t.string   "name"
+    t.integer  "store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "lists", ["store_id"], name: "index_lists_on_store_id", using: :btree
+
   create_table "prices", force: :cascade do |t|
     t.integer  "store_id"
     t.integer  "product_id"
-    t.decimal  "price",      precision: 5, scale: 3
+    t.decimal  "price",      precision: 9, scale: 3
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end

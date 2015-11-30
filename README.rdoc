@@ -99,3 +99,9 @@ e (must supply a block)
 
         autocomplete
         http://codepen.io/asommer70/post/autocomplete-with-rails4-autocomplete
+
+        autocomplete :product, :name,
+                       :extra_data => [:id, :alias],
+                       :scopes => [:wa2[1]],
+                       :display_value => :full_name,
+                       :full => true

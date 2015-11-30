@@ -4,4 +4,5 @@ class Price < ActiveRecord::Base
   validates :product, presence: true
   validates :store, presence: true
   validates :price, presence: true
+
 end

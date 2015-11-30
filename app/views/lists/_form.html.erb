@@ -20,6 +20,16 @@
       <%= f.text_field :name, :class => 'form-control', :required => true %>
     </div>
 
+    <div class="form-group form-group-sm">
+      <%= f.label :store, 'loja', :class => 'control-label' %>
+      <div class="input-group">
+        <%= f.collection_select(:store_id, Store.all, :id, :name, {}, {:class => 'form-control'}) %>
+        <span class="input-group-btn">
+          <%= link_to (fa_icon 'plus').to_s, new_store_path, :class => 'btn btn-default' %>
+        </span>
+      </div>
+    </div>
+
     <div class="hr"></div>
     <%= button_tag((fa_icon 'floppy-o').to_s, type: 'submit', :class => 'btn btn-primary') %>
     <%= link_to (fa_icon 'arrow-left').to_s, lists_path, :class => 'btn btn-default' %>

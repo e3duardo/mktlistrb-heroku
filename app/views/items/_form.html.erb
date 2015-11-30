@@ -17,7 +17,7 @@
 
     <div class="form-group form-group-sm">
       <%= f.label :product, 'produto', :class => 'control-label sr-only' %>
-      <%= f.autocomplete_field :product, autocomplete_product_name_items_path, :class => 'form-control', :required => true, :placeholder => 'produto' %>
+      <%= f.autocomplete_field :product, autocomplete_product_name_items_path(:store_id => @list.store.id), :update_elements => {:price => '#item_price'}, :class => 'form-control target_change', :required => true, :placeholder => 'produto' %>
 
 
     </div>
@@ -26,9 +26,38 @@
       <%= f.label :price, 'preço', :class => 'control-label sr-only' %>
       <div class="input-group">
         <div class="input-group-addon">R$</div>
-        <%= f.number_field :price, :class => 'form-control', :step => 0.05, :required => true, :placeholder => 'preço' %>
+        <%= f.number_field :price, :class => 'form-control target_change', :step => 0.01, :required => true, :placeholder => 'preço', :style => 'width:80px;' %>
+      </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+      <%= f.label :amount, 'quantidade', :class => 'control-label sr-only' %>
+      <%= f.number_field :amount, :class => 'form-control target_change', :required => true, :placeholder => 'qtd', :style => 'width:65px;', value: '1' %>
+    </div>
+
+    <div class="form-group form-group-sm">
+      <%= f.label :total, 'total', :class => 'control-label sr-only' %>
+      <div class="input-group">
+        <div class="input-group-addon">R$</div>
+        <%= f.text_field :total, :class => 'form-control', :required => true, :placeholder => 'total', :readonly => true, :style => 'width:80px;' %>
       </div>
     </div>
 
     <%= button_tag((fa_icon 'plus').to_s, type: 'submit', :class => 'btn btn-default') %>
+<% end %>
+
+
+<% content_for :script do %>
+    <script type="text/javascript">
+      function updprc() {
+          $('#item_total').val($('#item_price').val() * $('#item_amount').val());
+      }
+
+      $(".target_change").change(function () {
+        updprc()
+      });
+      $(".target_change").onblur(function () {
+        updprc()
+      });
+    </script>
 <% end %>
