@@ -6,9 +6,7 @@
       <th width="70%">nome</th>
       <th width="15%">latitude</th>
       <th width="15%">longitude</th>
-      <th width="16px"></th>
-      <th width="16px"></th>
-      <th width="16px"></th>
+      <th width="1px" colspan="3"></th>
     </tr>
 
     <% if @stores.any? %>
@@ -24,7 +22,7 @@
         <% end %>
     <% else %>
         <tr class="text-center">
-          <td colspan="5">Nenhuma loja encontrado.</td>
+          <td colspan="6">Nenhuma loja encontrado.</td>
         </tr>
     <% end %>
   </table>
@@ -35,5 +33,5 @@
 </div>
 
 
-<div class="hr"> </div>
+<div class="hr"></div>
 <%= link_to (fa_icon 'plus').to_s, new_store_path, :class => 'btn btn-primary' %>

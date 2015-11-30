@@ -5,9 +5,7 @@
     <tr>
       <th width="70%">nome</th>
       <th width="30%">loja</th>
-      <th width="16px"></th>
-      <th width="16px"></th>
-      <th width="16px"></th>
+      <th width="1px" colspan="3"></th>
     </tr>
 
     <% if @lists.any? %>
@@ -33,5 +31,5 @@
 </div>
 
 
-<div class="hr"> </div>
+<div class="hr"></div>
 <%= link_to (fa_icon 'plus').to_s, new_list_path, :class => 'btn btn-primary' %>

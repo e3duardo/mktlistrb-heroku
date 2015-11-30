@@ -6,9 +6,7 @@
       <th width="35%">produto</th>
       <th width="35%">loja</th>
       <th width="30%" class="text-right">preço</th>
-      <th width="16px"></th>
-      <th width="16px"></th>
-      <th width="16px"></th>
+      <th width="1px" colspan="3"></th>
     </tr>
 
     <% if @prices.any? %>
@@ -33,6 +31,7 @@
     <%= paginate @prices %>
   </div>
 </div>
+
 
 <div class="hr"></div>
 <%= link_to (fa_icon 'plus').to_s, new_price_path, :class => 'btn btn-primary' %>

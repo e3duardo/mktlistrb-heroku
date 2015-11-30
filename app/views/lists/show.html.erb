@@ -8,36 +8,45 @@
   <table class="table table-condensed table-bordered">
     <thead>
     <tr>
-      <th width="60%">produto</th>
-      <th width="13%" class="text-right">preço</th>
-      <th width="7%" class="text-right">qtd</th>
+      <th width="55%">produto</th>
+      <th width="15%" class="text-right">preço</th>
+      <th width="10%" class="text-right">qtd</th>
       <th width="20%" class="text-right">total</th>
-      <td width="10px" colspan="2"></td>
+      <td width="10px"></td>
     </tr>
     </thead>
 
     <tbody>
     <% if @items.any? %>
-        <% @items.each do |p| %>
+        <% @items.order('product').each do |p| %>
             <tr>
               <td><%= p.product %></td>
-              <td class="text-right"><%= number_to_currency(p.price, unit: 'R$ ', separator: ',', delimiter: '') %></td>
-              <td class="text-right"><%=p.amount%></td>
+              <%= form_for p do |f| %>
+                  <td class="text-right">
+                    <span class="fm-text" id="label_price_<%= p.id %>"><%= number_to_currency(p.price, unit: 'R$ ', separator: ',', delimiter: '') %></span>
+                    <!--input id="input_price_<%= p.id %>" style="display: none;" type="text" class="form-control input-sm" value="<%= p.price %>"/-->
+                    <%= f.number_field :price, :class => 'form-control input-sm', :id => "input_price_#{p.id}", :style => "display: none;" %>
+                  </td>
+                  <td class="text-right">
+                    <span class="fm-text" id="label_amount_<%= p.id %>"><%= p.amount %></span>
+                    <!--input id="input_amount_<%= p.id %>" style="display: none;" type="text" class="form-control input-sm" value="<%= p.amount %>"/-->
+                    <%= f.number_field :amount, :class => 'form-control input-sm', :id => "input_amount_#{p.id}", :style => "display: none;" %>
+                  </td>
+              <% end %>
               <td class="text-right"><%= number_to_currency(p.total, unit: 'R$ ', separator: ',', delimiter: '') %></td>
-              <td><%= link_to (fa_icon 'pencil').to_s, edit_item_path(p) %></td>
               <td><%= link_to (fa_icon 'trash').to_s, item_path(p), method: :delete, data: {confirm: 'Are you sure?'} %></td>
             </tr>
         <% end %>
     <% else %>
         <tr class="text-center">
-          <td colspan="4">Nenhum item encontrado.</td>
+          <td colspan="5">Nenhum item encontrado.</td>
         </tr>
     <% end %>
     </tbody>
     <tfoot>
     <tr>
-      <td class="text-right" colspan="4"><%= number_to_currency(@items.sum(:price), unit: 'R$ ', separator: ',', delimiter: '') %></th>
-      <td colspan="2"></td>
+      <td class="text-right" colspan="4"><%= number_to_currency(@items.sum(:total), unit: 'R$ ', separator: ',', delimiter: '') %></th>
+      <td></td>
     </tr>
     </tfoot>
   </table>
@@ -47,3 +56,27 @@
 <div class="hr"></div>
 <%= link_to (fa_icon 'pencil').to_s, edit_list_path(@list), :class => 'btn btn-primary' %>
 <%= link_to (fa_icon 'arrow-left').to_s, lists_path, :class => 'btn btn-default' %>
+
+<% content_for :script do %>
+    <script type="text/javascript">
+      $(".fm-text").click(function () {
+        var x = $(this).attr('id').split('_');
+        var label = '#label_' + x[1] + '_' + x[2];
+        var input = '#input_' + x[1] + '_' + x[2];
+
+        $(label).toggle();
+        $(input).toggle();
+        $(input).focus();
+
+        var antevalor = $(input).val();
+
+        $(input).blur(function () {
+          $(label).toggle();
+          $(input).toggle();
+
+          if (antevalor != $(input).val())
+            $("#edit_item_" + x[2]).submit();
+        });
+      });
+    </script>
+<% end %>

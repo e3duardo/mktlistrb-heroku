@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   autocomplete :product, :name,
                :extra_data => [:id, :alias, :price],
-              # :scopes => [:value_from_price],
+               # :scopes => [:value_from_price],
                :display_value => :full_name,
                :full => true
 
@@ -11,6 +11,22 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.create(list_params)
+    redirect_to :back
+  end
+
+  def update
+    @item = Item.find(params[:id])
+
+    @item.update(list_params)
+
+    @item.total = params[:item][:amount].to_f * params[:item][:price].to_f
+
+    @item.update(list_params)
+    redirect_to :back
+  end
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
     redirect_to :back
   end
 

@@ -17,46 +17,44 @@
 
     <div class="form-group form-group-sm">
       <%= f.label :product, 'produto', :class => 'control-label sr-only' %>
-      <%= f.autocomplete_field :product, autocomplete_product_name_items_path(:store_id => @list.store.id), :update_elements => {:price => '#item_price'}, :class => 'form-control target_change', :required => true, :placeholder => 'produto' %>
-
-
+      <%= f.autocomplete_field :product, autocomplete_product_name_items_path(:store_id => @list.store.id), :update_elements => {:price => '#item_price'}, :class => 'form-control target_change', :required => true, :placeholder => 'produto', :style => "width:220px" %>
     </div>
-
-    <div class="form-group form-group-sm">
+    <div class="form-group form-group-sm" style="width:170px">
       <%= f.label :price, 'preço', :class => 'control-label sr-only' %>
       <div class="input-group">
         <div class="input-group-addon">R$</div>
-        <%= f.number_field :price, :class => 'form-control target_change', :step => 0.01, :required => true, :placeholder => 'preço', :style => 'width:80px;' %>
+        <%= f.number_field :price, :class => 'form-control target_change', :step => 0.01, :required => true, :placeholder => 'preço' %>
       </div>
     </div>
-
     <div class="form-group form-group-sm">
       <%= f.label :amount, 'quantidade', :class => 'control-label sr-only' %>
-      <%= f.number_field :amount, :class => 'form-control target_change', :required => true, :placeholder => 'qtd', :style => 'width:65px;', value: '1' %>
+      <%= f.number_field :amount, :class => 'form-control target_change', :required => true, :placeholder => 'qtd', :style => "width:85px" %>
     </div>
-
-    <div class="form-group form-group-sm">
+    <div class="form-group form-group-sm" style="width:170px">
       <%= f.label :total, 'total', :class => 'control-label sr-only' %>
       <div class="input-group">
         <div class="input-group-addon">R$</div>
-        <%= f.text_field :total, :class => 'form-control', :required => true, :placeholder => 'total', :readonly => true, :style => 'width:80px;' %>
+        <%= f.text_field :total, :class => 'form-control target_change', :required => true, :placeholder => 'total', :readonly => true %>
       </div>
     </div>
-
     <%= button_tag((fa_icon 'plus').to_s, type: 'submit', :class => 'btn btn-default') %>
+
 <% end %>
 
 
 <% content_for :script do %>
     <script type="text/javascript">
       function updprc() {
-          $('#item_total').val($('#item_price').val() * $('#item_amount').val());
+        if ($('#item_amount').val() == "")
+          $('#item_amount').val(1);
+
+        $('#item_total').val($('#item_price').val() * $('#item_amount').val());
       }
 
       $(".target_change").change(function () {
         updprc()
       });
-      $(".target_change").onblur(function () {
+      $(".target_change").blur(function () {
         updprc()
       });
     </script>
