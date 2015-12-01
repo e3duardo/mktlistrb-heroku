@@ -52,23 +52,25 @@
     </div>
 
     <script type="text/javascript">
-      $(".fm-text").click(function () {
-        var x = $(this).attr('id').split('_');
-        var label = '#label_' + x[1] + '_' + x[2];
-        var input = '#input_' + x[1] + '_' + x[2];
+      $(document).ready(function () {
+        $(".fm-text").click(function () {
+          var x = $(this).attr('id').split('_');
+          var label = '#label_' + x[1] + '_' + x[2];
+          var input = '#input_' + x[1] + '_' + x[2];
 
-        $(label).toggle();
-        $(input).toggle();
-        $(input).focus();
-
-        var antevalor = $(input).val();
-
-        $(input).blur(function () {
           $(label).toggle();
           $(input).toggle();
+          $(input).focus();
 
-          if (antevalor != $(input).val())
-            $("#edit_item_" + x[2]).submit();
+          var antevalor = $(input).val();
+
+          $(input).blur(function () {
+            $(label).toggle();
+            $(input).toggle();
+
+            if (antevalor != $(input).val())
+              $("#edit_item_" + x[2]).submit();
+          });
         });
       });
     </script>

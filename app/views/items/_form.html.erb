@@ -50,12 +50,13 @@
 
         $('#item_total').val($('#item_price').val() * $('#item_amount').val());
       }
-
-      $(".target_change").change(function () {
-        updprc()
-      });
-      $(".target_change").blur(function () {
-        updprc()
+      $(document).ready(function () {
+        $(".target_change").change(function () {
+          updprc()
+        });
+        $(".target_change").blur(function () {
+          updprc()
+        });
       });
     </script>
 <% end %>
