@@ -22,145 +22,30 @@ html
   position: relative
   min-height: 100%
 
-
 body
-  padding-top: 20px
-  padding-bottom: 20px
+  padding-top: 15px
   margin-bottom: 60px
+/* este item serve para pagina lista junto com .footer-show */
 
-
-.hr
-  width: 100%
-  height: 1px
-  background: #e5e5e5
+hr
+  border-color: #e5e5e5
   margin-bottom: 10px
-  margin-top: 30px
-
-.footer-show
-  border: 1px solid #e5e5e5
-  background: #f8f8f8
-  position: absolute
-  bottom: 0
-  height: 60px
-  width: 100%
-  padding-top: 10px
-
-.header,
-.marketing,
-.footer
-  padding-right: 15px
-  padding-left: 15px
-
-.header
-  padding-bottom: 20px
-  border-bottom: 1px solid #e5e5e5
-  h3
-    margin-top: 0
-    margin-bottom: 0
-    line-height: 40px
-
-.footer
-  color: #ccc
-  margin-top: -27px
-  margin-right: 2px
-/*  padding-top: 19px*/
-/*border-top: 1px solid #e5e5e5*/
-
-
-/* Customize container */
-@media (min-width: 768px)
-  .container
-    max-width: 730px
-
-  .container-narrow > hr
-    margin: 30px 0
-
-  /* Main marketing message and sign up button */
-  .jumbotron
-    text-align: center
-    border-bottom: 1px solid #e5e5e5
-
-  .jumbotron .btn
-    padding: 14px 24px
-    font-size: 21px
-
-  /* Supporting marketing content */
-  .marketing
-    margin: 40px 0
-
-  .marketing p + h4
-    margin-top: 28px
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px)
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer
-    padding-right: 0
-    padding-left: 0
-
-  /* Space out the masthead */
-  .header
-    margin-bottom: 30px
-
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron
-    border-bottom: 0
-
-/*modal***************************/
-.modal-body
-  padding: 0
-  height: 220px
-
-.modal-sm > .modal-content > .modal-body
-  height: 80px
-
-.modal-header
-  padding: 10px 15px
-
-.iframe
-  border: 0
-  width: 100%
-  height: 300px
-
-.panel-primary > .panel-heading, .modal-primary > .modal-header
-  background-color: #337ab7
-  border-color: #337ab7
-  color: #fff
-
-.panel-primary
-  .panel-heading
-    a
-      color: #fff
-  .modal-primary
-    border-color: #337ab7
+  margin-top: 40px
 
 a
   cursor: pointer
 
-.abcxyz
-  width: 100%
-  .control-10
-    width: 10%
-  .control-20
-    width: 20%
-  .control-30
-    width: 30%
-  .control-40
-    width: 40%
-  .control-50
-    width: 50%
-  .control-60
-    width: 60%
-  .control-70
-    width: 70%
-  .control-80
-    width: 80%
-  .control-90
-    width: 90%
-  .control-100
-    width: 100%
+.header
+  border-bottom: 1px solid #e5e5e5
+  margin-bottom: 10px
+
+.footer
+  color: #ccc
+  margin-top: -27px
+  padding-right: 2px
+
+.container
+  max-width: 730px
 
 .field_with_errors
   @extend .has-error
@@ -170,60 +55,115 @@ a
   border-color: $btn-primary-bg
   color: $btn-primary-bg
 
+/* modal ************************/
+.modal-header
+  padding: 10px 15px
+
+.modal-body
+  padding: 0
+  height: 220px
+
+.modal-sm
+  .modal-content
+    .modal-body
+      height: 80px
+
+.iframe
+  border: 0
+  width: 100%
+  height: 300px
+
+.panel-modal-header
+  background-color: #337ab7
+  border-color: #337ab7
+  color: #fff
+
+.modal-primary
+  .modal-header
+    @extend .panel-modal-header
+
+.panel-primary
+  .panel-heading
+    @extend .panel-modal-header
+    a
+      color: #fff
+  .modal-primary
+    border-color: #337ab7
+
+/* modal ************************/
+
+
+/* autocomplete list ************/
 .ui-autocomplete
-  background-clip: padding-box
-  background-color: #ffffff
-  border-color: rgba(0, 0, 0, 0.2)
-  border-radius: 5px
-  border-style: solid
-  border-width: 1px
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2)
-  display: none
-  float: left
-  left: 0
-  list-style: outside none none
-  margin: 2px 0 0
-  min-width: 160px
-  padding: 4px 0
-  position: absolute
-  top: 100%
-  z-index: 1000
+  @extend .dropdown-menu
 
-.ui-autocomplete .ui-menu-item > a.ui-corner-all
-  clear: both
-  color: #555555
-  display: block
-  font-weight: normal
-  line-height: 18px
-  padding: 3px 15px
-  white-space: nowrap
+.ui-autocomplete
+  .ui-menu-item
+    clear: both
+    color: #333
+    display: block
+    font-weight: 400
+    line-height: 1.42857
+    padding: 3px 20px
+    white-space: nowrap
 
-.ui-widget-content .ui-state-focus
-  background-color: #0088cc
-  background-image: none
-  border-radius: 0
-  color: #ffffff
-  text-decoration: none
+.ui-widget-content
+  .ui-state-focus
+    background-color: #f5f5f5
+    color: #262626
+    text-decoration: none
 
 .ui-helper-hidden-accessible
   display: none
+/* autocomplete list ************/
+
 
 .item-product
-  width: 220px!important
+  width: 220px !important
 
 .item-price, .item-total
-  width: 160px!important
+  width: 160px !important
 
 .item-amount
-  width: 87px!important
+  width: 75px !important
 
 @media (max-width: $screen-sm-min)
-  .item-product
-    width: 100%!important
+  .item-product, .item-price, .item-total, .item-amount
+    width: 100% !important
 
-  .item-price, .item-total
-    width: 100%!important
+/** somente para list ************/
+.footer-show
+  position: absolute
+  border: 1px solid #e5e5e5
+  background: #f8f8f8
+  bottom: 0
+  height: 60px
+  width: 100%
+  padding-top: 10px
 
-  .item-amount
-    width: 100%!important
 
+
+.table-responsive,
+table td, table th
+  border: 1px solid #ddd
+
+.table-responsive
+  border-radius: 3px
+
+table
+  border-collapse: collapse
+  margin: 0
+
+table tr:first-child th
+  border-top: 0
+
+table tr:last-child td
+  border-bottom: 0
+
+table tr td:first-child,
+table tr th:first-child
+  border-left: 0
+
+table tr td:last-child,
+table tr th:last-child
+  border-right: 0

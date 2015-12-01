@@ -1,13 +1,17 @@
 <h2>
   <%= @list.name %>
 </h2>
-<div class="well well-sm">
-  <h4>adicionar item</h4>
-  <%= render 'items/form' %>
+
+<div class="panel panel-default">
+  <div class="panel-heading" id="add-item">adicionar item</div>
+  <div class="panel-body" id="add-body" style="display: none;">
+    <%= render 'items/form' %>
+  </div>
 </div>
 
 <div class="table-responsive">
-  <table class="table table-condensed table-bordered">
+  <table class="table table-hover table-condensed">
+    <tbody>
     <tr>
       <th width="55%">produto</th>
       <th width="15%" class="text-right">preço</th>
@@ -15,33 +19,41 @@
       <th width="20%" class="text-right">total</th>
       <td width="10px"></td>
     </tr>
-    <% if @items.any? %>
-        <% @items.order('product').each do |p| %>
-            <tr>
-              <td><%= p.product %></td>
-              <%= form_for p do |f| %>
-                  <td class="text-right">
-                    <span class="fm-text" id="label_price_<%= p.id %>"><%= number_to_currency(p.price, unit: 'R$ ', separator: ',', delimiter: '') %></span>
-                    <!--input id="input_price_<%= p.id %>" style="display: none;" type="text" class="form-control input-sm" value="<%= p.price %>"/-->
-                    <%= f.number_field :price, :class => 'form-control input-sm', :id => "input_price_#{p.id}", :style => "display: none;" %>
-                  </td>
-                  <td class="text-right">
-                    <span class="fm-text" id="label_amount_<%= p.id %>"><%= p.amount %></span>
-                    <!--input id="input_amount_<%= p.id %>" style="display: none;" type="text" class="form-control input-sm" value="<%= p.amount %>"/-->
-                    <%= f.number_field :amount, :class => 'form-control input-sm', :id => "input_amount_#{p.id}", :style => "display: none;" %>
-                  </td>
-              <% end %>
-              <td class="text-right"><%= number_to_currency(p.total, unit: 'R$ ', separator: ',', delimiter: '') %></td>
-              <td><%= link_to (fa_icon 'trash').to_s, item_path(p), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-            </tr>
-        <% end %>
-    <% else %>
-        <tr class="text-center">
-          <td colspan="5">Nenhum item encontrado.</td>
+    <% @items.order('product').each do |p| %>
+        <tr>
+          <td><%= p.product %></td>
+          <%= form_for p do |f| %>
+              <td class="text-right">
+                <span class="fm-text" id="label_price_<%= p.id %>"><%= number_to_currency(p.price, unit: 'R$ ', separator: ',', delimiter: '') %></span>
+                <!--input id="input_price_<%= p.id %>" style="display: none;" type="text" class="form-control input-sm" value="<%= p.price %>"/-->
+                <%= f.number_field :price, :class => 'form-control input-sm', :id => "input_price_#{p.id}", :style => "display: none;" %>
+              </td>
+              <td class="text-right">
+                <span class="fm-text" id="label_amount_<%= p.id %>"><%= p.amount %></span>
+                <!--input id="input_amount_<%= p.id %>" style="display: none;" type="text" class="form-control input-sm" value="<%= p.amount %>"/-->
+                <%= f.number_field :amount, :class => 'form-control input-sm', :id => "input_amount_#{p.id}", :style => "display: none;" %>
+              </td>
+          <% end %>
+          <td class="text-right"><%= number_to_currency(p.total, unit: 'R$ ', separator: ',', delimiter: '') %></td>
+          <td><%= link_to (fa_icon 'trash').to_s, item_path(p), method: :delete, data: {confirm: 'Are you sure?'} %></td>
         </tr>
     <% end %>
+    </tbody>
+    <tfoot>
+    <% if @items.blank? %>
+        <tr class="text-center">
+          <td colspan="5">nenhum registro encontrado</td>
+        </tr>
+    <% else %>
+        <tr class="text-center">
+          <td colspan="5"></td>
+        </tr>
+    <% end %>
+    </tfoot>
   </table>
 </div>
+
+<br class="clearfix">
 
 <% content_for :outcontainer do %>
     <div class="footer-show">
@@ -53,6 +65,11 @@
 
     <script type="text/javascript">
       $(document).ready(function () {
+        $('#add-item').css( 'cursor', 'pointer' );
+        $("#add-item").click(function () {
+          $("#add-body").fadeToggle();
+        });
+
         $(".fm-text").click(function () {
           var x = $(this).attr('id').split('_');
           var label = '#label_' + x[1] + '_' + x[2];

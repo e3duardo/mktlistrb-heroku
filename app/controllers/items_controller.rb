@@ -10,29 +10,36 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(list_params)
-    redirect_to :back
+    if Item.find_by_product(params[:item][:amount]).nil?
+      redirect_to :back
+      #TODO: criar validacao na view quando o produto já esta na lista
+    else
+      @item = Item.create(list_params)
+      redirect_to :back
+    end
+
+    end
+
+    def update
+      @item = Item.find(params[:id])
+
+      @item.update(list_params)
+
+      @item.total = params[:item][:amount].to_f * params[:item][:price].to_f
+
+      @item.update(list_params)
+      redirect_to :back
+    end
+
+    def destroy
+      item = Item.find(params[:id])
+      item.destroy
+      redirect_to :back
+    end
+
+
+    private
+    def list_params
+      params.require(:item).permit(:product, :list_id, :price, :amount, :total)
+    end
   end
-
-  def update
-    @item = Item.find(params[:id])
-
-    @item.update(list_params)
-
-    @item.total = params[:item][:amount].to_f * params[:item][:price].to_f
-
-    @item.update(list_params)
-    redirect_to :back
-  end
-  def destroy
-    item = Item.find(params[:id])
-    item.destroy
-    redirect_to :back
-  end
-
-
-  private
-  def list_params
-    params.require(:item).permit(:product, :list_id, :price, :amount, :total)
-  end
-end

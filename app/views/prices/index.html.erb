@@ -2,6 +2,7 @@
 
 <div class="table-responsive">
   <table class="table table-hover table-condensed">
+    <tbody>
     <tr>
       <th width="35%">produto</th>
       <th width="35%">loja</th>
@@ -9,7 +10,6 @@
       <th width="1px" colspan="3"></th>
     </tr>
 
-    <% if @prices.any? %>
     <% @prices.each do |p| %>
         <tr>
           <td><%= p.product.nil? ? '' : p.product.full_name %></td>
@@ -19,19 +19,25 @@
           <td><%= link_to (fa_icon 'pencil').to_s, edit_price_path(p) %></td>
           <td><%= link_to (fa_icon 'trash').to_s, price_path(p), method: :delete, data: {confirm: 'Are you sure?'} %></td>
         </tr>
-        <% end %>
+    <% end %>
+    </tbody>
+    <tfoot>
+    <% if @prices.blank? %>
+        <tr class="text-center">
+          <td colspan="6">nenhum registro encontrado</td>
+        </tr>
     <% else %>
         <tr class="text-center">
-          <td colspan="5">Nenhum preco encontrado.</td>
+          <td colspan="6"></td>
         </tr>
     <% end %>
+    </tfoot>
   </table>
-
-  <div class="text-center">
-    <%= paginate @prices %>
-  </div>
 </div>
 
+<div class="text-center">
+  <%= paginate @prices %>
+</div>
 
-<div class="hr"></div>
+<hr/>
 <%= link_to (fa_icon 'plus').to_s, new_price_path, :class => 'btn btn-primary' %>

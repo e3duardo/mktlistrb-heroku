@@ -2,36 +2,40 @@
 
 <div class="table-responsive">
   <table class="table table-hover table-condensed">
+    <tbody>
     <tr>
       <th width="70%">nome</th>
       <th width="15%">latitude</th>
       <th width="15%">longitude</th>
       <th width="1px" colspan="3"></th>
     </tr>
-
-    <% if @stores.any? %>
-        <% @stores.each do |store| %>
-            <tr>
-              <td><%= store.name %></td>
-              <td><%= store.latitude %></td>
-              <td><%= store.longitude %></td>
-              <td><%= link_to (fa_icon 'eye').to_s, store_path(store) %></td>
-              <td><%= link_to (fa_icon 'pencil').to_s, edit_store_path(store) %></td>
-              <td><%= link_to (fa_icon 'trash').to_s, store_path(store), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-            </tr>
-        <% end %>
-    <% else %>
-        <tr class="text-center">
-          <td colspan="6">Nenhuma loja encontrado.</td>
+    <% @stores.each do |store| %>
+        <tr>
+          <td><%= store.name %></td>
+          <td><%= store.latitude %></td>
+          <td><%= store.longitude %></td>
+          <td><%= link_to (fa_icon 'eye').to_s, store_path(store) %></td>
+          <td><%= link_to (fa_icon 'pencil').to_s, edit_store_path(store) %></td>
+          <td><%= link_to (fa_icon 'trash').to_s, store_path(store), method: :delete, data: {confirm: 'Are you sure?'} %></td>
         </tr>
     <% end %>
+    </tbody>
+    <tfoot>
+    <% if @stores.blank? %>
+        <tr class="text-center">
+          <td colspan="6">nenhum registro encontrado</td>
+        </tr>
+    <% else %>
+        <tr class="text-center">
+          <td colspan="6"></td>
+        </tr>
+    <% end %>
+    </tfoot>
   </table>
-
-  <div class="text-center">
-    <%= paginate @stores %>
-  </div>
+</div>
+<div class="text-center">
+  <%= paginate @stores %>
 </div>
 
-
-<div class="hr"></div>
+<hr/>
 <%= link_to (fa_icon 'plus').to_s, new_store_path, :class => 'btn btn-primary' %>
