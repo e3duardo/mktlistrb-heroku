@@ -43,8 +43,8 @@
   </table>
 </div>
 
-<% content_for :script do %>
-    <div class="hr">
+<% content_for :outcontainer do %>
+    <div class="footer-show">
       <div class="container">
         <%= link_to (fa_icon 'arrow-left').to_s, lists_path, :class => 'btn btn-default' %>
         <h4 class="pull-right">total: <%= number_to_currency(@items.sum(:total), unit: 'R$ ', separator: ',', delimiter: '') %></h4>

@@ -18,16 +18,16 @@
   <%= @store.longitude %>
 </p>
 
+<div id='map' style="position:relative; width:100%; height:300px; margin-top: 35px;"></div>
 
 <div class="hr"></div>
 <%= link_to (fa_icon 'pencil').to_s, edit_store_path(@store), :class => 'btn btn-primary' %>
 <%= link_to (fa_icon 'arrow-left').to_s, stores_path, :class => 'btn btn-default' %>
 
-
-<div id='map' style="position:relative; width:100%; height:300px; margin-top: 35px;"></div>
-<% content_for :script do %>
+<% content_for :outcontainer do %>
     <script type="text/javascript">
       $(function () {
+        console.log('map start');
         var mapOptions = {
           credentials: "Ao5-_dQImrnCf2P1U9Mwgdpw_Yo0h5p5TBbPN4dZPqpwbgqFLv497crtoOsSW6bX",
           mapTypeId: Microsoft.Maps.MapTypeId.road
