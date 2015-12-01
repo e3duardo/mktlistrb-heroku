@@ -17,9 +17,9 @@
 
     <div class="form-group form-group-sm">
       <%= f.label :product, 'produto', :class => 'control-label sr-only' %>
-      <%= f.autocomplete_field :product, autocomplete_product_name_items_path(:store_id => @list.store.id), :update_elements => {:price => '#item_price'}, :class => 'form-control target_change', :required => true, :placeholder => 'produto', :style => "width:220px" %>
+      <%= f.autocomplete_field :product, autocomplete_product_name_items_path(:store_id => @list.store.id), :update_elements => {:price => '#item_price'}, :class => 'form-control target_change item-product', :required => true, :placeholder => 'produto' %>
     </div>
-    <div class="form-group form-group-sm" style="width:170px">
+    <div class="form-group form-group-sm item-price">
       <%= f.label :price, 'preço', :class => 'control-label sr-only' %>
       <div class="input-group">
         <div class="input-group-addon">R$</div>
@@ -28,9 +28,9 @@
     </div>
     <div class="form-group form-group-sm">
       <%= f.label :amount, 'quantidade', :class => 'control-label sr-only' %>
-      <%= f.number_field :amount, :class => 'form-control target_change', :required => true, :placeholder => 'qtd', :style => "width:85px" %>
+      <%= f.number_field :amount, :class => 'form-control target_change item-amount', :required => true, :placeholder => 'qtd' %>
     </div>
-    <div class="form-group form-group-sm" style="width:170px">
+    <div class="form-group form-group-sm item-total">
       <%= f.label :total, 'total', :class => 'control-label sr-only' %>
       <div class="input-group">
         <div class="input-group-addon">R$</div>

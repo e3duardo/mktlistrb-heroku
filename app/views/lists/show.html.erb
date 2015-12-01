@@ -1,12 +1,13 @@
 <h2>
   <%= @list.name %>
 </h2>
-
-<%= render 'items/form' %><br>
+<div class="well well-sm">
+  <h4>adicionar item</h4>
+  <%= render 'items/form' %>
+</div>
 
 <div class="table-responsive">
   <table class="table table-condensed table-bordered">
-    <thead>
     <tr>
       <th width="55%">produto</th>
       <th width="15%" class="text-right">preço</th>
@@ -14,9 +15,6 @@
       <th width="20%" class="text-right">total</th>
       <td width="10px"></td>
     </tr>
-    </thead>
-
-    <tbody>
     <% if @items.any? %>
         <% @items.order('product').each do |p| %>
             <tr>
@@ -42,22 +40,17 @@
           <td colspan="5">Nenhum item encontrado.</td>
         </tr>
     <% end %>
-    </tbody>
-    <tfoot>
-    <tr>
-      <td class="text-right" colspan="4"><%= number_to_currency(@items.sum(:total), unit: 'R$ ', separator: ',', delimiter: '') %></th>
-      <td></td>
-    </tr>
-    </tfoot>
   </table>
 </div>
 
-
-<div class="hr"></div>
-<%= link_to (fa_icon 'pencil').to_s, edit_list_path(@list), :class => 'btn btn-primary' %>
-<%= link_to (fa_icon 'arrow-left').to_s, lists_path, :class => 'btn btn-default' %>
-
 <% content_for :script do %>
+    <div class="hr">
+      <div class="container">
+        <%= link_to (fa_icon 'arrow-left').to_s, lists_path, :class => 'btn btn-default' %>
+        <h4 class="pull-right">total: <%= number_to_currency(@items.sum(:total), unit: 'R$ ', separator: ',', delimiter: '') %></h4>
+      </div>
+    </div>
+
     <script type="text/javascript">
       $(".fm-text").click(function () {
         var x = $(this).attr('id').split('_');

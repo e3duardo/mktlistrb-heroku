@@ -9,7 +9,8 @@ class ListsController < ApplicationController
     @items = Item.all
 
     @item = Item.new
-    #@item.list = @list*/
+
+    render layout: "emulate_client"
   end
 
   def new
