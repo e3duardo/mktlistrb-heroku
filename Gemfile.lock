@@ -160,7 +160,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   font-awesome-rails (~> 4.5)
   jbuilder (~> 2.0)
-  jquery-rails
+  jquery-rails (= 4.0.5)
   jquery-ui-rails
   kaminari
   pg (~> 0.15)
