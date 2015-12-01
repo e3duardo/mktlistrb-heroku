@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    if Item.find_by_product(params[:item][:amount]).nil?
+    if Item.find_by_product(params[:item][:product]).nil?
       redirect_to :back
       #TODO: criar validacao na view quando o produto já esta na lista
     else
