@@ -24,7 +24,7 @@
     <tfoot>
     <% if @prices.blank? %>
         <tr class="text-center">
-          <td colspan="6">nenhum registro encontrado</td>
+          <td colspan="6"><%= t('no_record', model: Price.model_name.human) %></td>
         </tr>
     <% else %>
         <tr class="text-center">
@@ -40,4 +40,4 @@
 </div>
 
 <hr/>
-<%= link_to (fa_icon 'plus').to_s, new_price_path, :class => 'btn btn-primary' %>
+<%= link_to raw(t('btn_add', model: Price.model_name.human)), :class => 'btn btn-primary' %>

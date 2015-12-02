@@ -23,32 +23,36 @@ pt:
   mktlist-server: "mktlist-server"
   welcome_user: "bem vindo, %{user}"
   welcome_pre_text: "# mktlist\napp para listar produtos de diferentes tipos"
+
+  get_location: "obter minha localização"
+
   new_: "criar %{model}"
   edit_: "editar %{model}"
+  add_: "adicionar %{model}"
 
-  date:
-    formats:
-      default: "%d/%m/%Y"
-      short: "%d/%b"
-      long: "%B %d, %Y"
+  btn_edit: "<i class='fa fa-pencil'></i>"
+  btn_save: "<i class='fa fa-floppy-o'></i>"
+  btn_add: "<i class='fa fa-plus'></i>"
+  btn_back: "<i class='fa fa-arrow-left'></i>"
+  no_record: "nenhum registro encontrado"
 
   activerecord:
     models:
-    item:
-      one: "item"
-      other: "items"
-    list:
-      one: "lista"
-      other: "listas"
-    price:
-      one: "preço"
-      other: "preços"
-    product:
-      one: "produto"
-      other: "produtos"
-    store:
-      one: "loja"
-      other: "lojas"
+      item:
+        one: "item"
+        other: "items"
+      list:
+        one: "lista"
+        other: "listas"
+      price:
+        one: "preço"
+        other: "preços"
+      product:
+        one: "produto"
+        other: "produtos"
+      store:
+        one: "loja"
+        other: "lojas"
     attributes:
       item:
         product: "produto"
@@ -57,8 +61,11 @@ pt:
         total: "total"
       list:
         name: "nome"
+        store: "loja"
       price:
         price: "valor"
+        product: "produto"
+        store: "loja"
       product:
         name: "nome"
         alias: "detalhes"
@@ -68,6 +75,11 @@ pt:
         latitude: "latitude"
         longitude: "longitude"
 
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d/%b"
+      long: "%B %d, %Y"
 
   views:
     pagination:

@@ -1,4 +1,4 @@
-<%= form_for @item, html: {class: "form-inline"} do |f| %>
+<%= form_for @item do |f| %>
 
     <% if @item.errors.any? %>
         <div id="error_explanation" class="well-sm bg-danger" style="margin-bottom: 20px">
@@ -15,30 +15,27 @@
         </div>
     <% end %>
 
-    <div class="form-group form-group-sm">
-      <%= f.label :product, 'produto', :class => 'control-label sr-only' %>
-      <%= f.autocomplete_field :product, autocomplete_product_name_items_path(:store_id => @list.store.id), :update_elements => {:price => '#item_price'}, :class => 'form-control target_change item-product', :required => true, :placeholder => 'produto' %>
-    </div>
-    <div class="form-group form-group-sm item-price">
-      <%= f.label :price, 'preço', :class => 'control-label sr-only' %>
-      <div class="input-group">
-        <div class="input-group-addon">R$</div>
-        <%= f.number_field :price, :class => 'form-control target_change', :step => 0.01, :required => true, :placeholder => 'preço' %>
+    <div class="row add-row">
+      <div class="col-xs-12 col-sm-3">
+        <%= f.label :product, :class => 'control-label' %>
+        <%= f.autocomplete_field :product, autocomplete_product_name_items_path(:store_id => @list.store.id), :update_elements => {:price => '#item_price'}, :class => 'form-control target_change', :required => true, :placeholder => Item.human_attribute_name(:product) %>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+        <%= f.label :price, :class => 'control-label' %>
+        <%= f.number_field :price, :class => 'form-control target_change', :step => 0.01, :required => true, :placeholder => Item.human_attribute_name(:price) %>
+      </div>
+      <div class="col-xs-6 col-sm-2">
+        <%= f.label :amount, :class => 'control-label' %>
+        <%= f.number_field :amount, :class => 'form-control target_change', :required => true, :placeholder => Item.human_attribute_name(:amount) %>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+        <%= f.label :total, :class => 'control-label' %>
+        <%= f.text_field :total, :class => 'form-control target_change', :required => true, :placeholder => Item.human_attribute_name(:total), :readonly => true %>
+      </div>
+      <div class="col-xs-12 col-sm-1">
+        <%= button_tag(raw(t('btn_add', model: Item.model_name.human)), type: 'submit', :class => 'btn btn-default', :style => 'margin-top:25px') %>
       </div>
     </div>
-    <div class="form-group form-group-sm">
-      <%= f.label :amount, 'quantidade', :class => 'control-label sr-only' %>
-      <%= f.number_field :amount, :class => 'form-control target_change item-amount', :required => true, :placeholder => 'qtd' %>
-    </div>
-    <div class="form-group form-group-sm item-total">
-      <%= f.label :total, 'total', :class => 'control-label sr-only' %>
-      <div class="input-group">
-        <div class="input-group-addon">R$</div>
-        <%= f.text_field :total, :class => 'form-control target_change', :required => true, :placeholder => 'total', :readonly => true %>
-      </div>
-    </div>
-    <%= button_tag((fa_icon 'plus').to_s, type: 'submit', :class => 'btn btn-default') %>
-
 <% end %>
 
 

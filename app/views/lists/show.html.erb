@@ -3,7 +3,7 @@
 </h2>
 
 <div class="panel panel-default">
-  <div class="panel-heading" id="add-item">adicionar item</div>
+  <div class="panel-heading" id="add-item"><%= t('add_', model: Item.model_name.human)%></div>
   <div class="panel-body" id="add-body" style="display: none;">
     <%= render 'items/form' %>
   </div>
@@ -13,11 +13,11 @@
   <table class="table table-hover table-condensed">
     <tbody>
     <tr>
-      <th width="55%">produto</th>
-      <th width="15%" class="text-right">preço</th>
-      <th width="10%" class="text-right">qtd</th>
-      <th width="20%" class="text-right">total</th>
-      <td width="10px"></td>
+      <th width="55%"><%=Item.human_attribute_name(:product)%></th>
+      <th width="15%" class="text-right"><%=Item.human_attribute_name(:price)%></th>
+      <th width="10%" class="text-right"><abbr title="<%=Item.human_attribute_name(:amount)%>">[-]</abbr></th>
+      <th width="20%" class="text-right"><%=Item.human_attribute_name(:total)%></th>
+      <th width="10px"></th>
     </tr>
     <% @items.order('product').each do |p| %>
         <tr>
@@ -42,7 +42,7 @@
     <tfoot>
     <% if @items.blank? %>
         <tr class="text-center">
-          <td colspan="5">nenhum registro encontrado</td>
+          <td colspan="5"><%= t('no_record', model: Item.model_name.human) %></td>
         </tr>
     <% else %>
         <tr class="text-center">
@@ -57,9 +57,9 @@
 
 <% content_for :outcontainer do %>
     <div class="footer-show">
-      <div class="container">
-        <%= link_to (fa_icon 'arrow-left').to_s, lists_path, :class => 'btn btn-default' %>
-        <h4 class="pull-right">total: <%= number_to_currency(@items.sum(:total), unit: 'R$ ', separator: ',', delimiter: '') %></h4>
+      <div class="container-fluid">
+        <%= link_to raw(t('btn_back', model: Item.model_name.human)), lists_path, :class => 'btn btn-default' %>
+        <h4 class="pull-right"><%=Item.human_attribute_name(:total)%>: <%= number_to_currency(@items.sum(:total), unit: 'R$ ', separator: ',', delimiter: '') %></h4>
       </div>
     </div>
 

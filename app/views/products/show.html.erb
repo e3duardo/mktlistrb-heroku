@@ -10,5 +10,5 @@
 
 
 <hr/>
-<%= link_to (fa_icon 'pencil').to_s, edit_product_path(@product), :class => 'btn btn-primary' %>
-<%= link_to (fa_icon 'arrow-left').to_s, products_path, :class => 'btn btn-default' %>
+<%= link_to raw(t('btn_edit', model: Product.model_name.human)), edit_product_path(@product), :class => 'btn btn-primary' %>
+<%= link_to raw(t('btn_back', model: Product.model_name.human)), products_path, :class => 'btn btn-default' %>

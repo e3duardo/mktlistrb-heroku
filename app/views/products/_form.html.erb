@@ -27,6 +27,6 @@
 
 
     <hr/>
-    <%= button_tag((fa_icon 'floppy-o').to_s, type: 'submit', :class => 'btn btn-primary') %>
-    <%= link_to (fa_icon 'arrow-left').to_s, stores_path, :class => 'btn btn-default' %>
+    <%= button_tag(raw(t('btn_save', model: Product.model_name.human)), type: 'submit', :class => 'btn btn-primary') %>
+    <%= link_to raw(t('btn_back', model: Product.model_name.human)), stores_path, :class => 'btn btn-default' %>
 <% end %>

@@ -16,12 +16,12 @@
     <% end %>
 
     <div class="form-group form-group-sm">
-      <%= f.label :name, 'nome', :class => 'control-label' %>
+      <%= f.label :name, :class => 'control-label' %>
       <%= f.text_field :name, :class => 'form-control', :required => true %>
     </div>
 
     <div class="form-group form-group-sm">
-      <%= f.label :store, 'loja', :class => 'control-label' %>
+      <%= f.label :store, :class => 'control-label' %>
       <div class="input-group">
         <%= f.collection_select(:store_id, Store.all, :id, :name, {}, {:class => 'form-control'}) %>
         <span class="input-group-btn">
@@ -31,6 +31,6 @@
     </div>
 
     <hr/>
-    <%= button_tag((fa_icon 'floppy-o').to_s, type: 'submit', :class => 'btn btn-primary') %>
-    <%= link_to (fa_icon 'arrow-left').to_s, lists_path, :class => 'btn btn-default' %>
+    <%= button_tag(raw(t('btn_save', model: List.model_name.human)), type: 'submit', :class => 'btn btn-primary') %>
+    <%= link_to raw(t('btn_back', model: List.model_name.human)), lists_path, :class => 'btn btn-default' %>
 <% end %>

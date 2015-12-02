@@ -1,28 +1,28 @@
 <p>
-  <strong><%=Store.human_attribute_name(:name)%>:</strong>
+  <strong><%= Store.human_attribute_name(:name) %>:</strong>
   <%= @store.name %>
 </p>
 
 <p>
-  <strong><%=Store.human_attribute_name(:description)%>:</strong>
+  <strong><%= Store.human_attribute_name(:description) %>:</strong>
   <%= @store.description %>
 </p>
 
 <p>
-  <strong><%=Store.human_attribute_name(:latitude)%>:</strong>
+  <strong><%= Store.human_attribute_name(:latitude) %>:</strong>
   <%= @store.latitude %>
 </p>
 
 <p>
-  <strong><%=Store.human_attribute_name(:longitude)%>:</strong>
+  <strong><%= Store.human_attribute_name(:longitude) %>:</strong>
   <%= @store.longitude %>
 </p>
 
 <div id='map' style="position:relative; width:100%; height:300px; margin-top: 35px;"></div>
 
 <hr/>
-<%= link_to (fa_icon 'pencil').to_s, edit_store_path(@store), :class => 'btn btn-primary' %>
-<%= link_to (fa_icon 'arrow-left').to_s, stores_path, :class => 'btn btn-default' %>
+<%= link_to raw(t('btn_edit', model: Store.model_name.human)), edit_store_path(@store), :class => 'btn btn-primary' %>
+<%= link_to raw(t('btn_back', model: Store.model_name.human)), stores_path, :class => 'btn btn-default' %>
 
 <% content_for :outcontainer do %>
     <script type="text/javascript">

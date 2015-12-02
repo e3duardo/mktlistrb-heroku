@@ -24,45 +24,56 @@ en:
   welcome_user: "welcome, %{user}"
   welcome_pre_text: "# mktlist\napp for listing diferents types of products"
 
+  get_location: "get my location"
+
   new_: "new %{model}"
   edit_: "edit %{model}"
+  add_: "add %{model}"
 
+  btn_edit: "<i class='fa fa-pencil'></i>"
+  btn_save: "<i class='fa fa-floppy-o'></i>"
+  btn_add: "<i class='fa fa-plus'></i>"
+  btn_back: "<i class='fa fa-arrow-left'></i>"
+  no_record: "no record found"
 
   activerecord:
-      models:
-        item:
-          one: "item"
-          other: "items"
-        list:
-          one: "list"
-          other: "lists"
-        price:
-          one: "price"
-          other: "prices"
-        product:
-          one: "product"
-          other: "products"
-        store:
-          one: "store"
-          other: "stores"
-      attributes:
-        item:
-          product: "product"
-          price: "price"
-          amount: "amount"
-          total: "total"
-        list:
-          name: "name"
-        price:
-          price: "value"
-        product:
-          name: "name"
-          alias: "details"
-        store:
-          name: "name"
-          description: "description"
-          latitude: "latitude"
-          longitude: "longitude"
+    models:
+      item:
+        one: "item"
+        other: "items"
+      list:
+        one: "list"
+        other: "lists"
+      price:
+        one: "price"
+        other: "prices"
+      product:
+        one: "product"
+        other: "products"
+      store:
+        one: "store"
+        other: "stores"
+    attributes:
+      item:
+        product: "product"
+        price: "price"
+        amount: "amount"
+        total: "total"
+      list:
+        name: "name"
+        store: "store"
+      price:
+        price: "value"
+        product: "product"
+        store: "store"
+      product:
+        name: "name"
+        alias: "details"
+      store:
+        name: "name"
+        description: "description"
+        latitude: "latitude"
+        longitude: "longitude"
 
   date:
     formats:

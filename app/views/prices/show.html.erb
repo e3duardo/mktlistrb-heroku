@@ -1,19 +1,19 @@
 <p>
-  <strong><%=Product.human_attribute_name(:product)%>:</strong>
+  <strong><%=Price.human_attribute_name(:product)%>:</strong>
   <%= @price.product.name %>
 </p>
 
 <p>
-  <strong><%=Product.human_attribute_name(:store)%>:</strong>
+  <strong><%=Price.human_attribute_name(:store)%>:</strong>
   <%= @price.store.name %>
 </p>
 
 <p>
-  <strong><%=Product.human_attribute_name(:price)%>:</strong>
+  <strong><%=Price.human_attribute_name(:price)%>:</strong>
   <%= number_to_currency(@price.price, unit: 'R$ ', separator: ',', delimiter: '') %>
 </p>
 
 
 <hr/>
-<%= link_to (fa_icon 'pencil').to_s, edit_price_path(@price), :class => 'btn btn-primary' %>
-<%= link_to (fa_icon 'arrow-left').to_s, prices_path, :class => 'btn btn-default' %>
+<%= link_to raw(t('btn_edit', model: Price.model_name.human)), edit_price_path(@price), :class => 'btn btn-primary' %>
+<%= link_to raw(t('btn_back', model: Price.model_name.human)), prices_path, :class => 'btn btn-default' %>
