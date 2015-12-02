@@ -34,7 +34,10 @@ en:
   btn_save: "<i class='fa fa-floppy-o'></i>"
   btn_add: "<i class='fa fa-plus'></i>"
   btn_back: "<i class='fa fa-arrow-left'></i>"
+
   no_record: "no record found"
+
+  no_record: "1 record found"
 
   activerecord:
     models:
