@@ -55,14 +55,17 @@ Rails.application.routes.draw do
   #   end
 
   # get 'welcome/index'
-  root 'welcome#index'
 
-  resources :stores
-  resources :products
-  resources :prices
-  resources :lists
-  resources :items do
-    get :autocomplete_product_name, :on => :collection
+
+  scope "(:locale)", locale: /pt|en/ do
+    root 'welcome#index'
+    resources :stores
+    resources :products
+    resources :prices
+    resources :lists
+    resources :items do
+      get :autocomplete_product_name, :on => :collection
+    end
   end
 
 end

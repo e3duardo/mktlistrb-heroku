@@ -1,10 +1,10 @@
 <p>
-  <strong>nome:</strong>
+  <strong><%=Product.human_attribute_name(:name)%>:</strong>
   <%= @product.name %>
 </p>
 
 <p>
-  <strong>detalhes:</strong>
+  <strong><%=Product.human_attribute_name(:alias)%>:</strong>
   <%= @product.alias %>
 </p>
 

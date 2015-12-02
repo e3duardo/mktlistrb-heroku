@@ -4,46 +4,41 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>mktlist-server</title>
-  <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+  <title><%= t('mktlist-server') %></title>
+  <% if params[:controller] == 'stores' %>
+      <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+  <% end %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'map', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%- # container         -%>
 <div class="container">
   <div class="header clearfix">
     <div class="text-muted">
       <h3 class="pull-left" style="margin-right: 10px">
-        <%= link_to 'mktlist-server', root_path %>
+        <%= link_to t('mktlist-server'), root_path %>
       </h3>
     </div>
     <nav>
       <ul class="nav nav-pills pull-right">
         <li role="presentation" class="<%= 'active' if params[:controller] == 'stores' %>">
-          <%= link_to 'loja', stores_path %></li>
+          <%= link_to Store.model_name.human, stores_path %></li>
         <li role="presentation" class="<%= 'active' if params[:controller] == 'products' %>">
-          <%= link_to 'produto', products_path %></li>
+          <%= link_to Product.model_name.human, products_path %></li>
         <li role="presentation" class="<%= 'active' if params[:controller] == 'prices' %>">
-          <%= link_to 'preços', new_price_path %></li>
+          <%= link_to Price.model_name.human, new_price_path %></li>
         <li role="presentation" class="<%= 'active' if params[:controller] == 'lists' %>">
-          <%= link_to 'lista', lists_path, :class => 'btn btn-info-outline' %></li>
+          <%= link_to List.model_name.human, lists_path, :class => 'btn btn-info-outline' %></li>
       </ul>
     </nav>
   </div>
-
   <%= yield %>
-
   <footer class="footer text-right">
-    <p>&copy; mktlist-server 2015</p>
+    <p>&copy; <%= t('mktlist-server') %><%= Time.now.year %></p>
   </footer>
 </div>
-<%- # container    -%>
 
 <%= yield :outcontainer %>
-
 </body>
 </html>

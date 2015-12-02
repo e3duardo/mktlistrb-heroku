@@ -1,0 +1,78 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+pt:
+  mktlist-server: "mktlist-server"
+  welcome_user: "bem vindo, %{user}"
+  welcome_pre_text: "# mktlist\napp para listar produtos de diferentes tipos"
+  new_: "criar %{model}"
+  edit_: "editar %{model}"
+
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d/%b"
+      long: "%B %d, %Y"
+
+  activerecord:
+    models:
+    item:
+      one: "item"
+      other: "items"
+    list:
+      one: "lista"
+      other: "listas"
+    price:
+      one: "preço"
+      other: "preços"
+    product:
+      one: "produto"
+      other: "produtos"
+    store:
+      one: "loja"
+      other: "lojas"
+    attributes:
+      item:
+        product: "produto"
+        price: "preço"
+        amount: "quantidade"
+        total: "total"
+      list:
+        name: "nome"
+      price:
+        price: "valor"
+      product:
+        name: "nome"
+        alias: "detalhes"
+      store:
+        name: "nome"
+        description: "descrição"
+        latitude: "latitude"
+        longitude: "longitude"
+
+
+  views:
+    pagination:
+      first: "<i class='fa fa-fast-backward'></i>"
+      previous: "<i class='fa fa-step-backward'></i>"
+      next: "<i class='fa fa-step-forward'></i>"
+      last: "<i class='fa fa-fast-forward'></i>"
+      truncate: "..."

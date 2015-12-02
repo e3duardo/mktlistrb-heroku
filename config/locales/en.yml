@@ -20,11 +20,60 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  mktlist-server: "mktlist-server"
+  welcome_user: "welcome, %{user}"
+  welcome_pre_text: "# mktlist\napp for listing diferents types of products"
+
+  new_: "new %{model}"
+  edit_: "edit %{model}"
+
+
+  activerecord:
+      models:
+        item:
+          one: "item"
+          other: "items"
+        list:
+          one: "list"
+          other: "lists"
+        price:
+          one: "price"
+          other: "prices"
+        product:
+          one: "product"
+          other: "products"
+        store:
+          one: "store"
+          other: "stores"
+      attributes:
+        item:
+          product: "product"
+          price: "price"
+          amount: "amount"
+          total: "total"
+        list:
+          name: "name"
+        price:
+          price: "value"
+        product:
+          name: "name"
+          alias: "details"
+        store:
+          name: "name"
+          description: "description"
+          latitude: "latitude"
+          longitude: "longitude"
+
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
   views:
-      pagination:
-        first: "<i class='fa fa-fast-backward'></i>"
-        previous: "<i class='fa fa-step-backward'></i>"
-        next: "<i class='fa fa-step-forward'></i>"
-        last: "<i class='fa fa-fast-forward'></i>"
-        truncate: "..."
+    pagination:
+      first: "<i class='fa fa-fast-backward'></i>"
+      previous: "<i class='fa fa-step-backward'></i>"
+      next: "<i class='fa fa-step-forward'></i>"
+      last: "<i class='fa fa-fast-forward'></i>"
+      truncate: "..."

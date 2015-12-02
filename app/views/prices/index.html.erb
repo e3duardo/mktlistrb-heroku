@@ -1,12 +1,12 @@
-<h2>preços</h2>
+<h2><%=Price.model_name.human%></h2>
 
 <div class="table-responsive">
   <table class="table table-hover table-condensed">
     <tbody>
     <tr>
-      <th width="35%">produto</th>
-      <th width="35%">loja</th>
-      <th width="30%" class="text-right">preço</th>
+      <th width="35%"><%=Price.human_attribute_name(:product)%></th>
+      <th width="35%"><%=Price.human_attribute_name(:store)%></th>
+      <th width="30%" class="text-right"><%=Price.human_attribute_name(:price)%></th>
       <th width="1px" colspan="3"></th>
     </tr>
 

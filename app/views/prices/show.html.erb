@@ -1,15 +1,15 @@
 <p>
-  <strong>produto:</strong>
+  <strong><%=Product.human_attribute_name(:product)%>:</strong>
   <%= @price.product.name %>
 </p>
 
 <p>
-  <strong>loja:</strong>
+  <strong><%=Product.human_attribute_name(:store)%>:</strong>
   <%= @price.store.name %>
 </p>
 
 <p>
-  <strong>preço:</strong>
+  <strong><%=Product.human_attribute_name(:price)%>:</strong>
   <%= number_to_currency(@price.price, unit: 'R$ ', separator: ',', delimiter: '') %>
 </p>
 

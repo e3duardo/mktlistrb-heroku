@@ -1,20 +1,20 @@
 <p>
-  <strong>nome:</strong>
+  <strong><%=Store.human_attribute_name(:name)%>:</strong>
   <%= @store.name %>
 </p>
 
 <p>
-  <strong>descrição:</strong>
+  <strong><%=Store.human_attribute_name(:description)%>:</strong>
   <%= @store.description %>
 </p>
 
 <p>
-  <strong>latitude:</strong>
+  <strong><%=Store.human_attribute_name(:latitude)%>:</strong>
   <%= @store.latitude %>
 </p>
 
 <p>
-  <strong>longitude:</strong>
+  <strong><%=Store.human_attribute_name(:longitude)%>:</strong>
   <%= @store.longitude %>
 </p>
 
