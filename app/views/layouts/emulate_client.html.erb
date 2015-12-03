@@ -6,57 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= t('mktlist-server') %></title>
   <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'client', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'map', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <style>
-    html {
-      position: relative!important;
-      min-height: 100%!important;
-    }
 
-    body {
-      background-color: #A0D3FF !important;
-      background-image: linear-gradient(to bottom, #B9DFFF 0px, #A0D3FF 100%) !important;
-      background-repeat: repeat-x !important;
-      margin-bottom: 60px !important;
-    }
-
-    .footer-show {
-      position: absolute !important;
-      border-top: 1px solid #5E8BB2 !important;
-      background: #5E8BB2 !important;
-      color: #ffffff !important;
-      bottom: 0 !important;
-      height: 60px !important;
-      width: 100% !important;
-      padding-top: 10px !important;
-    }
-
-    h2 {
-      color: #5E8BB2 !important;
-      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) !important;
-    }
-
-    .table-responsive {
-      background: #ffffff !important;
-    }
-
-    table, th, tr, td, .table-responsive, .panel, .panel-heading, .panel-body {
-      border-color: #ddd !important;
-    }
-
-    th {
-      background: #f5f5f5 !important;
-    }
-
-    .table-responsive {
-      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) !important;
-    }
   </style>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid" style="overflow-y: scroll;position:fixed; width: 100%; overflow-y:auto; height: 100%; margin-bottom: 60px;">
   <%= yield %>
 </div>
 <%= yield :outcontainer %>

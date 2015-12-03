@@ -22,7 +22,7 @@
 en:
   mktlist-server: "mktlist-server"
   welcome_user: "welcome, %{user}"
-  welcome_pre_text: "# mktlist\napp for listing diferents types of products"
+  welcome_pre_text: "# mktlist\napp for listing differents types of products"
 
   get_location: "get my location"
 
