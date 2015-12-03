@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_tree .
+ *= stub emulate_cliente
  *= require_self
  */
 
@@ -150,7 +151,17 @@ table tr td:last-child,
 table tr th:last-child
   border-right: 0
 
-
 .add-row div
   margin-top: 2px
   margin-bottom: 2px
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+input[type=number]
+  -moz-appearance: textfield
+
+input
+  min-width: 40px
