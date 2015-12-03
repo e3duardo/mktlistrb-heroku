@@ -3,7 +3,7 @@
 </h2>
 
 <div class="panel panel-default">
-  <div class="panel-heading" id="add-item"><%= t('add_', model: Item.model_name.human)%></div>
+  <div class="panel-heading" id="add-item"><%= t('add_', model: Item.model_name.human) %></div>
   <div class="panel-body" id="add-body" style="display: none;">
     <%= render 'items/form' %>
   </div>
@@ -13,10 +13,10 @@
   <table class="table table-hover table-condensed">
     <tbody>
     <tr>
-      <th width="55%"><%=Item.human_attribute_name(:product)%></th>
-      <th width="15%" class="text-right"><%=Item.human_attribute_name(:price)%></th>
-      <th width="10%" class="text-right"><abbr title="<%=Item.human_attribute_name(:amount)%>">[-]</abbr></th>
-      <th width="20%" class="text-right"><%=Item.human_attribute_name(:total)%></th>
+      <th width="55%"><%= Item.human_attribute_name(:product) %></th>
+      <th width="15%" class="text-right"><%= Item.human_attribute_name(:price) %></th>
+      <th width="10%" class="text-right"><abbr title="<%= Item.human_attribute_name(:amount) %>">[-]</abbr></th>
+      <th width="20%" class="text-right"><%= Item.human_attribute_name(:total) %></th>
       <th width="10px"></th>
     </tr>
     <% @items.order('product').each do |p| %>
@@ -24,13 +24,11 @@
           <td><%= p.product %></td>
           <%= form_for p do |f| %>
               <td class="text-right">
-                <span class="fm-text" id="label_price_<%= p.id %>"><%= number_to_currency(p.price, unit: 'R$ ', separator: ',', delimiter: '') %></span>
-                <!--input id="input_price_<%= p.id %>" style="display: none;" type="text" class="form-control input-sm" value="<%= p.price %>"/-->
+                <i><span class="fm-text" id="label_price_<%= p.id %>"><%= number_to_currency(p.price, unit: 'R$ ', separator: ',', delimiter: '') %></span></i>
                 <%= f.number_field :price, :class => 'form-control input-sm', :id => "input_price_#{p.id}", :style => "display: none;" %>
               </td>
               <td class="text-right">
-                <span class="fm-text" id="label_amount_<%= p.id %>"><%= p.amount %></span>
-                <!--input id="input_amount_<%= p.id %>" style="display: none;" type="text" class="form-control input-sm" value="<%= p.amount %>"/-->
+                <i><span class="fm-text" id="label_amount_<%= p.id %>"><%= p.amount %></span></i>
                 <%= f.number_field :amount, :class => 'form-control input-sm', :id => "input_amount_#{p.id}", :style => "display: none;" %>
               </td>
           <% end %>
@@ -59,13 +57,14 @@
     <div class="footer-show">
       <div class="container-fluid">
         <%= link_to raw(t('btn_back', model: Item.model_name.human)), lists_path, :class => 'btn btn-default' %>
-        <h4 class="pull-right"><%=Item.human_attribute_name(:total)%>: <%= number_to_currency(@items.sum(:total), unit: 'R$ ', separator: ',', delimiter: '') %></h4>
+        <h4 class="pull-right"><%= Item.human_attribute_name(:total) %>
+          : <%= number_to_currency(@items.sum(:total), unit: 'R$ ', separator: ',', delimiter: '') %></h4>
       </div>
     </div>
 
     <script type="text/javascript">
       $(document).ready(function () {
-        $('#add-item').css( 'cursor', 'pointer' );
+        $('#add-item').css('cursor', 'pointer');
         $("#add-item").click(function () {
           $("#add-body").fadeToggle();
         });
