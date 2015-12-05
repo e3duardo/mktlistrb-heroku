@@ -1,5 +1,5 @@
 <h2>
-  <%= @list.name %>
+  <%= @list.name %> <small><%= @list.store.name %></small>
 </h2>
 
 <div class="panel panel-default">
@@ -24,15 +24,15 @@
           <td><%= p.product %></td>
           <%= form_for p do |f| %>
               <td class="text-right">
-                <i><span class="fm-text" id="label_price_<%= p.id %>"><%= number_to_currency(p.price, unit: 'R$ ', separator: ',', delimiter: '') %></span></i>
+                <span class="fm-text" id="label_price_<%= p.id %>"><abbr title="<%= t 'click_to_edit' %>"><%= number_to_currency(p.price) %></abbr></span>
                 <%= f.number_field :price, :class => 'form-control input-sm', :id => "input_price_#{p.id}", :style => "display: none;" %>
               </td>
               <td class="text-right">
-                <i><span class="fm-text" id="label_amount_<%= p.id %>"><%= p.amount %></span></i>
+                <span class="fm-text" id="label_amount_<%= p.id %>"><abbr title="<%= t 'click_to_edit' %>"><%= number_with_delimiter(p.amount) %></abbr></span>
                 <%= f.number_field :amount, :class => 'form-control input-sm', :id => "input_amount_#{p.id}", :style => "display: none;" %>
               </td>
           <% end %>
-          <td class="text-right"><%= number_to_currency(p.total, unit: 'R$ ', separator: ',', delimiter: '') %></td>
+          <td class="text-right"><%= number_to_currency(p.total) %></td>
           <td><%= link_to (fa_icon 'trash').to_s, item_path(p), method: :delete, data: {confirm: 'Are you sure?'} %></td>
         </tr>
     <% end %>
@@ -57,8 +57,7 @@
     <div class="footer-show">
       <div class="container-fluid">
         <%= link_to raw(t('btn_back', model: Item.model_name.human)), lists_path, :class => 'btn btn-default' %>
-        <h4 class="pull-right"><%= Item.human_attribute_name(:total) %>
-          : <%= number_to_currency(@items.sum(:total), unit: 'R$ ', separator: ',', delimiter: '') %></h4>
+        <h4 class="pull-right"><%= Item.human_attribute_name(:total) %>: <%= number_to_currency(@items.sum(:total)) %></h4>
       </div>
     </div>
 

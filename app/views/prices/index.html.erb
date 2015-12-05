@@ -14,7 +14,7 @@
         <tr>
           <td><%= p.product.nil? ? '' : p.product.full_name %></td>
           <td><%= p.store.nil? ? '' : p.store.name %></td>
-          <td class="text-right"><%= number_to_currency(p.price, unit: 'R$ ', separator: ',', delimiter: '') %></td>
+          <td class="text-right"><%= number_to_currency(p.price) %></td>
           <td><%= link_to (fa_icon 'eye').to_s, price_path(p) %></td>
           <td><%= link_to (fa_icon 'pencil').to_s, edit_price_path(p) %></td>
           <td><%= link_to (fa_icon 'trash').to_s, price_path(p), method: :delete, data: {confirm: 'Are you sure?'} %></td>

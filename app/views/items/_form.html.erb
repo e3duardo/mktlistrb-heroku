@@ -26,11 +26,11 @@
       </div>
       <div class="col-xs-6 col-sm-2">
         <%= f.label :amount, :class => 'control-label' %>
-        <%= f.number_field :amount, :class => 'form-control target_change', :required => true, :placeholder => Item.human_attribute_name(:amount) %>
+        <%= f.number_field :amount, :class => 'form-control target_change', :step => 'any', :required => true, :placeholder => Item.human_attribute_name(:amount) %>
       </div>
       <div class="col-xs-6 col-sm-3">
         <%= f.label :total, :class => 'control-label' %>
-        <%= f.text_field :total, :class => 'form-control target_change', :required => true, :placeholder => Item.human_attribute_name(:total), :readonly => true %>
+        <%= f.number_field :total, :class => 'form-control target_change', :required => true, :placeholder => Item.human_attribute_name(:total), :readonly => true %>
       </div>
       <div class="col-xs-12 col-sm-1">
         <%= button_tag(raw(t('btn_add', model: Item.model_name.human)), type: 'submit', :class => 'btn btn-default', :style => 'margin-top:25px') %>

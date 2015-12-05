@@ -10,7 +10,7 @@
 
 <p>
   <strong><%=Price.human_attribute_name(:price)%>:</strong>
-  <%= number_to_currency(@price.price, unit: 'R$ ', separator: ',', delimiter: '') %>
+  <%= number_to_currency(@price.price) %>
 </p>
 
 

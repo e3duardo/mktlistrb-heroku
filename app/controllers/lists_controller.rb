@@ -1,4 +1,6 @@
 class ListsController < ApplicationController
+  layout "emulate_client", :only => :show
+
   def index
     @lists = List.order('name').page(params[:page]).per(10)
   end
@@ -9,8 +11,6 @@ class ListsController < ApplicationController
     @items = Item.all
 
     @item = Item.new
-
-    render layout: "emulate_client"
   end
 
   def new
