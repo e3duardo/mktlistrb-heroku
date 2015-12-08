@@ -1,11 +1,11 @@
-<h2><%=Product.model_name.human%></h2>
+<h2><%= Product.model_name.human %></h2>
 
 <div class="table-responsive">
   <table class="table table-hover table-condensed">
     <tbody>
     <tr>
-      <th width="45%"><%=Product.human_attribute_name(:name)%></th>
-      <th width="55%"><%=Product.human_attribute_name(:alias)%></th>
+      <th width="45%"><%= Product.human_attribute_name(:name) %></th>
+      <th width="55%"><%= Product.human_attribute_name(:alias) %></th>
       <th width="1px" colspan="3"></th>
     </tr>
     <% @products.each do |product| %>
@@ -14,27 +14,22 @@
           <td><%= product.alias %></td>
           <td><%= link_to (fa_icon 'eye').to_s, product_path(product) %></td>
           <td><%= link_to (fa_icon 'pencil').to_s, edit_product_path(product) %></td>
-          <td><%= link_to (fa_icon 'trash').to_s, product_path(product), method: :delete, data: {confirm: 'tem certeza?'} %></td>
+          <td><%= link_to (fa_icon 'trash').to_s, product_path(product), method: :delete, data: {confirm: t(:prompt_to_delete)} %></td>
         </tr>
     <% end %>
     </tbody>
     <tfoot>
     <% if @products.blank? %>
         <tr class="text-center">
-          <td colspan="5"><%= t('no_record', model: Product.model_name.human) %></td>
-        </tr>
-    <% else %>
-        <tr class="text-center">
-          <td colspan="5"></td>
+          <td colspan="5"><%= raw t(:no_record, model: Product.model_name.human) %></td>
         </tr>
     <% end %>
     </tfoot>
   </table>
 </div>
 
-<div class="text-center">
-  <%= paginate @products %>
-</div>
+<%= paginate @products %>
 
-<hr/>
-<%= link_to raw(t('btn_add', model: Product.model_name.human)), new_product_path, :class => 'btn btn-primary' %>
+<% content_for :footer_buttons do %>
+    <%= link_to raw(t('btn_add', model: Product.model_name.human)), new_product_path, :class => 'btn btn-primary' %>
+<% end %>

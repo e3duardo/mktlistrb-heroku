@@ -44,9 +44,10 @@
       <a href="#" id="geome" class="btn btn-info"><%= t "get_location" %></a>
     </p>
 
-    <hr/>
-    <%= button_tag(raw(t('btn_save', model: Store.model_name.human)), type: 'submit', :class => 'btn btn-primary') %>
-    <%= link_to raw(t('btn_back', model: Store.model_name.human)), stores_path, :class => 'btn btn-default' %>
+    <% content_for :footer_buttons do %>
+        <%= button_tag(raw(t('btn_save', model: Store.model_name.human)), type: :submit, form: f.options[:html][:id], :class => 'btn btn-primary') %>
+        <%= link_to raw(t('btn_back', model: Store.model_name.human)), stores_path, :class => 'btn btn-default' %>
+    <% end %>
 <% end %>
 
 <% content_for :outcontainer do %>

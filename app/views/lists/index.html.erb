@@ -1,11 +1,11 @@
-<h2><%=List.model_name.human%></h2>
+<h2><%= List.model_name.human %></h2>
 
 <div class="table-responsive">
   <tbody>
   <table class="table table-hover table-condensed">
     <tr>
-      <th width="70%"><%=List.human_attribute_name(:name)%></th>
-      <th width="30%"><%=List.human_attribute_name(:store)%></th>
+      <th width="70%"><%= List.human_attribute_name(:name) %></th>
+      <th width="30%"><%= List.human_attribute_name(:store) %></th>
       <th width="1px" colspan="3"></th>
     </tr>
 
@@ -15,27 +15,22 @@
           <td><%= f.store.nil? ? '' : f.store.name %></td>
           <td><%= link_to (fa_icon 'eye').to_s, list_path(f) %></td>
           <td><%= link_to (fa_icon 'pencil').to_s, edit_list_path(f) %></td>
-          <td><%= link_to (fa_icon 'trash').to_s, list_path(f), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          <td><%= link_to (fa_icon 'trash').to_s, list_path(f), method: :delete, data: {confirm: t(:prompt_to_delete)} %></td>
         </tr>
     <% end %>
     </tbody>
     <tfoot>
     <% if @lists.blank? %>
         <tr class="text-center">
-          <td colspan="5"><%= t('no_record', model: List.model_name.human) %></td>
-        </tr>
-    <% else %>
-        <tr class="text-center">
-          <td colspan="5"></td>
+          <td colspan="5"><%= raw t(:no_record, model: List.model_name.human) %></td>
         </tr>
     <% end %>
     </tfoot>
   </table>
 </div>
 
-<div class="text-center">
-  <%= paginate @lists %>
-</div>
+<%= paginate @lists %>
 
-<hr/>
-<%= link_to raw(t('btn_add', model: List.model_name.human)), new_list_path, :class => 'btn btn-primary' %>
+<% content_for :footer_buttons do %>
+    <%= link_to raw(t('btn_add', model: List.model_name.human)), new_list_path, :class => 'btn btn-primary' %>
+<% end %>

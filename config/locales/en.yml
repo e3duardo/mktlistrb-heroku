@@ -35,10 +35,8 @@ en:
   btn_save: "<i class='fa fa-floppy-o'></i>"
   btn_add: "<i class='fa fa-plus'></i>"
   btn_back: "<i class='fa fa-arrow-left'></i>"
-
-  no_record: "no record found"
-
-  no_record: "1 record found"
+  no_record: "<span class='text-muted'><i>no record found</i></span>"
+  prompt_to_delete: "are you sure?"
 
   activerecord:
     errors:
@@ -63,6 +61,9 @@ en:
       store:
         one: "store"
         other: "stores"
+      user_price:
+        one: "user price"
+        other: "user prices"
     attributes:
       item:
         product: "product"
@@ -84,6 +85,12 @@ en:
         description: "description"
         latitude: "latitude"
         longitude: "longitude"
+      user_price:
+        product: "product"
+        product_name: "product name"
+        product_alias: "product alias"
+        price: "price"
+
 
   views:
     pagination:

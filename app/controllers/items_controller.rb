@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
                :full => true
 
   def get_autocomplete_items(parameters)
-    super(parameters).joins(:prices).where("products.id = prices.product_id").where("prices.store_id = #{params[:store_id]}")
+    super(parameters).joins(:prices).where("products.id = prices.product_id").where("prices.store_id = #{params[:store_id]}").last(1)
   end
 
   def create

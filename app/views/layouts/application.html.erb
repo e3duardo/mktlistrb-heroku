@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= t('mktlist-server') %></title>
   <% if params[:controller] == 'stores' %>
-      <script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+      <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
   <% end %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'map', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body lang="<%= I18n.locale%>">
+<body lang="<%= I18n.locale %>">
 <div class="container">
-  <div class="header clearfix">
+  <header>
     <div class="text-muted">
-      <h3 class="pull-left" style="margin-right: 10px">
+      <h3 class="pull-left">
         <%= link_to t('mktlist-server'), root_path %>
       </h3>
     </div>
@@ -32,13 +32,15 @@
           <%= link_to List.model_name.human, lists_path, :class => 'btn btn-info-outline' %></li>
       </ul>
     </nav>
-  </div>
-  <%= yield %>
-  <footer class="footer text-right">
+  </header>
+  <main>
+    <%= yield %>
+  </main>
+  <footer>
+    <div class="footer-button"><%= yield :footer_buttons %></div>
     <p>&copy; <%= t('mktlist-server') %> <%= Time.now.year %></p>
   </footer>
 </div>
-
-<%= yield :outcontainer %>
 </body>
+<%= yield :outcontainer %>
 </html>

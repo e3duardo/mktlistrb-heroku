@@ -43,7 +43,8 @@
       </div>
     </div>
 
-    <hr/>
-    <%= button_tag(raw(t('btn_save', model: Price.model_name.human)), type: 'submit', :class => 'btn btn-primary') %>
-    <%= link_to raw(t('btn_back', model: Price.model_name.human)), prices_path, :class => 'btn btn-default' %>
+    <% content_for :footer_buttons do %>
+        <%= button_tag(raw(t('btn_save', model: Price.model_name.human)), type: :submit, form: f.options[:html][:id], :class => 'btn btn-primary') %>
+        <%= link_to raw(t('btn_back', model: Price.model_name.human)), prices_path, :class => 'btn btn-default' %>
+    <% end %>
 <% end %>

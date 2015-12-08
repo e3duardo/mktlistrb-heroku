@@ -22,6 +22,8 @@ rails generate controller articles
 # create model
 rails generate model Article title:string text:text
 
+rails generate job guests_cleanup
+
 # migrate
 rake db:migrate
 rake db:migrate RAILS_ENV=production

@@ -3,7 +3,7 @@
     <% if @product.errors.any? %>
         <div id="error_explanation" class="well-sm bg-danger" style="margin-bottom: 20px">
           <h4>
-            <%= @product.errors.count  %>
+            <%= @product.errors.count %>
             <%= 'erro precisa ser corrigido' if @product.errors.count == 1 %>
             <%= 'erros precisam ser corrigidos' if @product.errors.count > 1 %>
           </h4>
@@ -16,8 +16,8 @@
     <% end %>
 
     <div class="form-group" form-group-sm>
-      <%= f.label :name, :class => 'control-label'%>
-      <%= f.text_field :name, :class => 'form-control', :required => true  %>
+      <%= f.label :name, :class => 'control-label' %>
+      <%= f.text_field :name, :class => 'form-control', :required => true %>
     </div>
 
     <div class="form-group form-group-sm">
@@ -25,8 +25,8 @@
       <%= f.text_field :alias, :class => 'form-control' %>
     </div>
 
-
-    <hr/>
-    <%= button_tag(raw(t('btn_save', model: Product.model_name.human)), type: 'submit', :class => 'btn btn-primary') %>
-    <%= link_to raw(t('btn_back', model: Product.model_name.human)), stores_path, :class => 'btn btn-default' %>
+    <% content_for :footer_buttons do %>
+        <%= button_tag(raw(t('btn_save', model: Product.model_name.human)), type: :submit, form: f.options[:html][:id], :class => 'btn btn-primary') %>
+        <%= link_to raw(t('btn_back', model: Product.model_name.human)), stores_path, :class => 'btn btn-default' %>
+    <% end %>
 <% end %>

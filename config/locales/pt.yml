@@ -35,7 +35,9 @@ pt:
   btn_save: "<i class='fa fa-floppy-o'></i>"
   btn_add: "<i class='fa fa-plus'></i>"
   btn_back: "<i class='fa fa-arrow-left'></i>"
-  no_record: "nenhum registro encontrado"
+  btn_compare: " <i class='fa fa-balance-scale'></i>"
+  no_record: "<span class='text-muted'><i>nenhum registro encontrado</i></span>"
+  prompt_to_delete: "deseja excluir?"
 
   activerecord:
     errors:
@@ -60,6 +62,9 @@ pt:
       store:
         one: "loja"
         other: "lojas"
+      user_price:
+        one: "preço de usuário"
+        other: "preços de usuário"
     attributes:
       item:
         product: "produto"
@@ -81,6 +86,11 @@ pt:
         description: "descrição"
         latitude: "latitude"
         longitude: "longitude"
+      user_price:
+        product: "produto"
+        product_name: "produto nome"
+        product_alias: "produto codnome"
+        price: "preço"
 
   views:
     pagination:

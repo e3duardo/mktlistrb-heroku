@@ -59,13 +59,17 @@ Rails.application.routes.draw do
 
   scope "(:locale)", locale: /pt|en/ do
     root 'welcome#index'
+    get 'compare' => 'compare#index'
     resources :stores
     resources :products
     resources :prices
-    resources :lists
-    resources :items do
+    resources :user_prices
+    resources :lists #client
+    resources :items do #client
       get :autocomplete_product_name, :on => :collection
     end
+
+
   end
 
 end

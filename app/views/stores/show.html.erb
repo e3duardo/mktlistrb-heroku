@@ -20,24 +20,26 @@
 
 <div id='map' style="position:relative; width:100%; height:300px; margin-top: 35px;"></div>
 
-<hr/>
-<%= link_to raw(t('btn_edit', model: Store.model_name.human)), edit_store_path(@store), :class => 'btn btn-primary' %>
-<%= link_to raw(t('btn_back', model: Store.model_name.human)), stores_path, :class => 'btn btn-default' %>
+<% content_for :footer_buttons do %>
+    <%= link_to raw(t('btn_edit', model: Store.model_name.human)), edit_store_path(@store), :class => 'btn btn-primary' %>
+    <%= link_to raw(t('btn_add', model: Store.model_name.human)), new_store_path, :class => 'btn btn-default' %>
+    <%= link_to raw(t('btn_back', model: Store.model_name.human)), stores_path, :class => 'btn btn-default' %>
+<% end %>
 
 <% content_for :outcontainer do %>
     <script type="text/javascript">
       $(document).ready(function () {
-        var mapOptions = {
+        var map = new Microsoft.Maps.Map(document.getElementById('map'), {
           credentials: "Ao5-_dQImrnCf2P1U9Mwgdpw_Yo0h5p5TBbPN4dZPqpwbgqFLv497crtoOsSW6bX",
-          mapTypeId: Microsoft.Maps.MapTypeId.road
-        }
+        });
 
-        var map = new Microsoft.Maps.Map(document.getElementById("map"), mapOptions);
+        var loc = new Microsoft.Maps.Location(<%=@store.latitude%>, <%=@store.longitude%>);
 
-        var loc = new Microsoft.Maps.Location(parseInt(<%=@store.latitude%>), parseInt(<%=@store.longitude%>));
-        var pin = new Microsoft.Maps.Pushpin(loc);
-        map.entities.push(pin);
-        map.setView({center: loc, zoom: 6});
+        var pushpinOptions = {width: null, height: null, htmlContent: '<i class="fa fa-map-marker fa-2x"></i>'};
+        var pushpin = new Microsoft.Maps.Pushpin(loc, pushpinOptions);
+
+        map.entities.push(pushpin);
+        map.setView({center: loc, zoom: 16});
       });
     </script>
 <% end %>
