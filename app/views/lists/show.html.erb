@@ -40,12 +40,14 @@
     <tfoot>
     <% if @items.blank? %>
         <tr class="text-center">
-          <td colspan="5"><%= t('no_record', model: Item.model_name.human) %></td>
+          <td colspan="5"><%= raw t('no_record', model: Item.model_name.human) %></td>
         </tr>
     <% end %>
     </tfoot>
   </table>
 </div>
+
+<div id="container-modal" class="modal fade" tabindex="-1" role="dialog"></div>
 
 <br class="clearfix">
 
@@ -53,7 +55,6 @@
     <div class="footer-show">
       <div class="container-fluid">
         <%= link_to raw(t('btn_back', model: Item.model_name.human)), lists_path, :class => 'btn btn-default' %>
-        <a href="#" id="compare-btn" class="btn btn-default"><%= raw(t('btn_compare'))%></a>
         <h4 class="pull-right"><%= Item.human_attribute_name(:total) %>: <%= number_to_currency(@items.sum(:total)) %></h4>
       </div>
     </div>
@@ -92,7 +93,7 @@
             title: 'comparar',
             message: iframe,
             closeButton: true,
-            saveButton: false,
+            saveButton: true,
             scrollable: false
           });
           return false;

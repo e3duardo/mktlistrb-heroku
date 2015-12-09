@@ -1,0 +1,59 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"
+              aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">comparar peso/preço</h4>
+    </div>
+
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-xs-12">
+          <label>preco por unidade</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <input type="number" step="0.01" class="form-control in_calc" placeholder="preco por unidade" id="_price">
+        </div>
+        <div class="col-xs-2">
+          <select class="selectpicker form-control in_calc" id="_price_unit">
+            <option value="g">g</option>
+            <option value="kg">kg</option>
+          </select>
+        </div>
+
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <label>quantidade</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <input type="number" step="0.01" class="form-control in_calc" placeholder="quantidade" id="_count">
+        </div>
+        <div class="col-xs-2">
+          <select class="selectpicker form-control in_calc" id="_count_unit">
+            <option value="g">g</option>
+            <option value="kg">kg</option>
+          </select>
+        </div>
+        <div class="col-xs-4">
+          <input type="number" step="0.01" class="form-control" placeholder="total" id="_total" readonly>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">fechar</button>
+      <button type="button" class="btn btn-primary" id="add_btn_modal" data-dismiss="modal">adicionar</button>
+    </div>
+  </div>
+</div>

@@ -18,7 +18,13 @@
     <div class="row add-row">
       <div class="col-xs-12 col-sm-3">
         <%= f.label :product, :class => 'control-label' %>
-        <%= f.autocomplete_field :product, autocomplete_product_name_items_path(:store_id => @list.store.id), :update_elements => {:price => '#item_price'}, :class => 'form-control target_change', :required => true, :placeholder => Item.human_attribute_name(:product) %>
+
+        <div class="input-group">
+          <%= f.autocomplete_field :product, autocomplete_product_name_items_path(:store_id => @list.store.id), :update_elements => {:price => '#item_price'}, :class => 'form-control target_change', :required => true, :placeholder => Item.human_attribute_name(:product) %>
+          <span class="input-group-btn">
+            <td><%= link_to raw(t :btn_compare), compare_path, remote: true, class: 'btn btn-default' %></td>
+          </span>
+        </div>
       </div>
       <div class="col-xs-6 col-sm-3">
         <%= f.label :price, :class => 'control-label' %>

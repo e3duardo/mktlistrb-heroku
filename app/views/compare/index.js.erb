@@ -1,0 +1,56 @@
+$("#container-modal").html("<%= escape_javascript(render 'index') %>")
+$("#container-modal").modal("show")
+
+
+function calc_price(c, c_un, pr, pr_un) {
+  var count = 0;
+  if (pr_un == 'g') {
+    if (c_un == 'g') {
+      count = c;
+    }
+    else if (c_un == 'kg') {
+      count = c * 1000;
+    }
+  }
+  else if (pr_un == 'kg') {
+    if (c_un == 'g') {
+      count = c / 1000;
+    }
+    else if (c_un == 'kg') {
+      count = c;
+    }
+  }
+  return pr * count;
+}
+
+$(function () {
+  $('.in_calc').change(function () {
+    $('#_total').val(calc_price($('#_count').val(), $('#_count_unit').val(), $('#_price').val(), $('#_price_unit').val()));
+  });
+
+  $('#add_btn_modal').click(function () {
+    var count = $('#_count').val();
+    var price = $('#_price').val();
+    var count_unit = $('#_count_unit').val();
+    var price_unit = $('#_price_unit').val();
+
+
+    if (price_unit == 'kg') {
+      if (count_unit == 'g') {
+        count_unit = 'kg';
+        count = count / 1000;
+      }
+    }
+    else if (price_unit == 'g') {
+      if (count_unit == 'kg') {
+        price_unit = 'kg';
+        price = price * 1000;
+      }
+    }
+
+    $('#item_price').val(price);
+    $('#item_amount').val(count);
+    $('#item_amount').focus();
+    $('#item_total').focus();
+  });
+})
