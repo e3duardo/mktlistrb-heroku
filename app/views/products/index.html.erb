@@ -6,7 +6,7 @@
     <tr>
       <th width="45%"><%= Product.human_attribute_name(:name) %></th>
       <th width="55%"><%= Product.human_attribute_name(:alias) %></th>
-      <th width="1px" colspan="3"></th>
+      <th></th>
     </tr>
     <% @products.each do |product| %>
         <tr>
@@ -28,7 +28,16 @@
   </table>
 </div>
 
-<%= paginate @products %>
+
+
+<div class="fixed-table-pagination">
+  <div class="pull-left pagination-detail">
+    <span class="pagination-info">Showing 1 to 10 of 800 rows</span>
+  </div>
+  <div class="pull-right pagination">
+    <%= paginate @products %>
+  </div>
+</div>
 
 <% content_for :footer_buttons do %>
     <%= link_to raw(t('btn_add', model: Product.model_name.human)), new_product_path, :class => 'btn btn-primary' %>

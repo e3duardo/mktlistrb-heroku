@@ -22,7 +22,7 @@
     <% @items.order('product').each do |p| %>
         <tr>
           <td colspan="4" style="padding: 0;">
-            <div class="drag_row drag_line" data-id="<%= p.id %>" style="background:#fff!important; height: 30px;">
+            <div class="drag_row drag_line" data-id="<%= p.id %>" style="background:#fff!important; height: 30px; -ms-touch-action: none;">
               <table width="100%" height="100%" class="noborder">
                 <tr>
                   <td width="55%"><%= p.product %></td>
@@ -43,7 +43,7 @@
             <!--div class="drag_left drag_line" id="drag_left_<%= p.id %>" style="display: none;">
               <p>O edit</p></div-->
             <div class="drag_right drag_line" id="drag_right_<%= p.id %>" style="display: none;">
-              <%= link_to (fa_icon 'trash').to_s, item_path(p), method: :delete, data: {confirm: 'Are you sure?'}, style:'display: none;' %>
+              <%= link_to (fa_icon 'trash').to_s, item_path(p), method: :delete, data: {confirm: 'Are you sure?'}, style: 'display: none;' %>
               <p>delete <i class="fa fa-trash"></i></p></div>
           </td>
         </tr>
@@ -99,6 +99,8 @@
           });
         });
 
+
+        //compare
         $('#compare-btn').on('click', function () {
           var pdf_link = '/compare';
           var iframe = '<iframe id="iframe1" class="iframe" src="' + pdf_link + '"></iframe>';
@@ -146,7 +148,7 @@
       });
 
       function del(id) {
-        $('#drag_right_'+id).find('a').click();
+        $('#drag_right_' + id).find('a').click();
       }
       //function edit(id) {
       //  $('#drag_left_'+id).$('a').click();
