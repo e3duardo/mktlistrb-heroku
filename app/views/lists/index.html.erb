@@ -6,16 +6,16 @@
     <tr>
       <th width="70%"><%= List.human_attribute_name(:name) %></th>
       <th width="30%"><%= List.human_attribute_name(:store) %></th>
-      <th width="1px" colspan="3"></th>
+      <th width="1px"></th>
     </tr>
 
     <% @lists.each do |f| %>
         <tr>
           <td><%= f.name %></td>
           <td><%= f.store.nil? ? '' : f.store.name %></td>
-          <td><%= link_to (fa_icon 'eye').to_s, list_path(f) %></td>
-          <td><%= link_to (fa_icon 'pencil').to_s, edit_list_path(f) %></td>
-          <td><%= link_to (fa_icon 'trash').to_s, list_path(f), method: :delete, data: {confirm: t(:prompt_to_delete)} %></td>
+          <td><%= link_to (fa_icon 'eye').to_s, list_path(f) %>
+            <%= link_to (fa_icon 'pencil').to_s, edit_list_path(f) %>
+            <%= link_to (fa_icon 'trash').to_s, list_path(f), method: :delete, data: {confirm: t(:prompt_to_delete)} %></td>
         </tr>
     <% end %>
     </tbody>

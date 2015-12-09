@@ -7,7 +7,7 @@
       <th width="35%"><%= Price.human_attribute_name(:product) %></th>
       <th width="35%"><%= Price.human_attribute_name(:store) %></th>
       <th width="30%" class="text-right"><%= Price.human_attribute_name(:price) %></th>
-      <th width="1px" colspan="3"></th>
+      <th width="1px"></th>
     </tr>
 
     <% @prices.each do |p| %>
@@ -15,9 +15,9 @@
           <td><%= p.product.nil? ? '' : p.product.full_name %></td>
           <td><%= p.store.nil? ? '' : p.store.name %></td>
           <td class="text-right"><%= number_to_currency(p.price) %></td>
-          <td><%= link_to (fa_icon 'eye').to_s, price_path(p) %></td>
-          <td><%= link_to (fa_icon 'pencil').to_s, edit_price_path(p) %></td>
-          <td><%= link_to (fa_icon 'trash').to_s, price_path(p), method: :delete, data: {confirm: t(:prompt_to_delete)} %></td>
+          <td><%= link_to (fa_icon 'eye').to_s, price_path(p) %>
+            <%= link_to (fa_icon 'pencil').to_s, edit_price_path(p) %>
+            <%= link_to (fa_icon 'trash').to_s, price_path(p), method: :delete, data: {confirm: t(:prompt_to_delete)} %></td>
         </tr>
     <% end %>
     </tbody>

@@ -1,5 +1,6 @@
 <h2>
-  <%= @list.name %> <small><%= @list.store.name %></small>
+  <%= @list.name %>
+  <small><%= @list.store.name %></small>
 </h2>
 
 <div class="panel panel-default">
@@ -17,37 +18,46 @@
       <th width="15%" class="text-right"><%= Item.human_attribute_name(:price) %></th>
       <th width="10%" class="text-right"><abbr title="<%= Item.human_attribute_name(:amount) %>">[-]</abbr></th>
       <th width="20%" class="text-right"><%= Item.human_attribute_name(:total) %></th>
-      <th width="10px"></th>
     </tr>
     <% @items.order('product').each do |p| %>
         <tr>
-          <td><%= p.product %></td>
-          <%= form_for p do |f| %>
-              <td class="text-right">
-                <span class="fm-text" id="label_price_<%= p.id %>"><abbr title="<%= t 'click_to_edit' %>"><%= number_to_currency(p.price) %></abbr></span>
-                <%= f.number_field :price, :class => 'form-control input-sm', :id => "input_price_#{p.id}", :style => "display: none;" %>
-              </td>
-              <td class="text-right">
-                <span class="fm-text" id="label_amount_<%= p.id %>"><abbr title="<%= t 'click_to_edit' %>"><%= number_with_delimiter(p.amount) %></abbr></span>
-                <%= f.number_field :amount, :class => 'form-control input-sm', :id => "input_amount_#{p.id}", :style => "display: none;" %>
-              </td>
-          <% end %>
-          <td class="text-right"><%= number_to_currency(p.total) %></td>
-          <td><%= link_to (fa_icon 'trash').to_s, item_path(p), method: :delete, data: {confirm: t(:prompt_to_delete)} %></td>
+          <td colspan="4" style="padding: 0;">
+            <div class="drag_row drag_line" data-id="<%= p.id %>" style="background:#fff!important; height: 30px;">
+              <table width="100%" height="100%" class="noborder">
+                <tr>
+                  <td width="55%"><%= p.product %></td>
+                  <%= form_for p do |f| %>
+                      <td width="15%" class="text-right">
+                        <span class="fm-text" id="label_price_<%= p.id %>"><abbr title="<%= t 'click_to_edit' %>"><%= number_to_currency(p.price) %></abbr></span>
+                        <%= f.number_field :price, :class => 'form-control input-sm', :id => "input_price_#{p.id}", :style => "display: none;" %>
+                      </td>
+                      <td width="10%" class="text-right">
+                        <span class="fm-text" id="label_amount_<%= p.id %>"><abbr title="<%= t 'click_to_edit' %>"><%= number_with_delimiter(p.amount) %></abbr></span>
+                        <%= f.number_field :amount, :class => 'form-control input-sm', :id => "input_amount_#{p.id}", :style => "display: none;" %>
+                      </td>
+                  <% end %>
+                  <td width="20%" class="text-right"><%= number_to_currency(p.total) %></td>
+                </tr>
+              </table>
+            </div>
+            <!--div class="drag_left drag_line" id="drag_left_<%= p.id %>" style="display: none;">
+              <p>O edit</p></div-->
+            <div class="drag_right drag_line" id="drag_right_<%= p.id %>" style="display: none;">
+              <%= link_to (fa_icon 'trash').to_s, item_path(p), method: :delete, data: {confirm: 'Are you sure?'}, style:'display: none;' %>
+              <p>delete <i class="fa fa-trash"></i></p></div>
+          </td>
         </tr>
     <% end %>
     </tbody>
     <tfoot>
     <% if @items.blank? %>
         <tr class="text-center">
-          <td colspan="5"><%= raw t('no_record', model: Item.model_name.human) %></td>
+          <td colspan="4"><%= raw t('no_record', model: Item.model_name.human) %></td>
         </tr>
     <% end %>
     </tfoot>
   </table>
 </div>
-
-<div id="container-modal" class="modal fade" tabindex="-1" role="dialog"></div>
 
 <br class="clearfix">
 
@@ -55,9 +65,12 @@
     <div class="footer-show">
       <div class="container-fluid">
         <%= link_to raw(t('btn_back', model: Item.model_name.human)), lists_path, :class => 'btn btn-default' %>
-        <h4 class="pull-right"><%= Item.human_attribute_name(:total) %>: <%= number_to_currency(@items.sum(:total)) %></h4>
+        <h4 class="pull-right"><%= Item.human_attribute_name(:total) %>
+          : <%= number_to_currency(@items.sum(:total)) %></h4>
       </div>
     </div>
+
+    <div id="container-modal" class="modal fade" tabindex="-1" role="dialog"></div>
 
     <script type="text/javascript">
       $(document).ready(function () {
@@ -99,5 +112,44 @@
           return false;
         });
       });
+
+
+      //table edit delete
+      var x = 0;
+      var x2 = 0;
+      $('.drag_row').draggable({
+        revert: true, axis: "x", scroll: false,
+        start: function () {
+          x = $(this).position().left;
+        },
+        drag: function () {
+          x2 = $(this).position().left;
+          if (x2 > x) {
+            //$('#drag_left_' + $(this).data("id")).show();
+            $('#drag_right_' + $(this).data("id")).hide();
+            return false;//remove for 2 sides slide
+          } else {
+            //$('#drag_left_' + $(this).data("id")).hide();
+            $('#drag_right_' + $(this).data("id")).show();
+          }
+        }, stop: function () {
+          //$('#drag_left_' + $(this).data("id")).hide();
+          $('#drag_right_' + $(this).data("id")).hide();
+
+          // if (x2 > (x + 40)) {
+          //  edit($(this).data("id"));
+          // }
+          if (x2 < (x - 40)) {
+            del($(this).data("id"));
+          }
+        }
+      });
+
+      function del(id) {
+        $('#drag_right_'+id).find('a').click();
+      }
+      //function edit(id) {
+      //  $('#drag_left_'+id).$('a').click();
+      //}
     </script>
 <% end %>

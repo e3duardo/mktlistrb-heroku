@@ -7,16 +7,16 @@
       <th width="70%"><%= Store.human_attribute_name(:name) %></th>
       <th width="15%"><%= Store.human_attribute_name(:latitude) %></th>
       <th width="15%"><%= Store.human_attribute_name(:longitude) %></th>
-      <th width="1px" colspan="3"></th>
+      <th width="1px"></th>
     </tr>
     <% @stores.each do |store| %>
         <tr>
           <td><%= store.name %></td>
           <td><%= store.latitude %></td>
           <td><%= store.longitude %></td>
-          <td><%= link_to (fa_icon 'eye').to_s, store_path(store) %></td>
-          <td><%= link_to (fa_icon 'pencil').to_s, edit_store_path(store) %></td>
-          <td><%= link_to (fa_icon 'trash').to_s, store_path(store), method: :delete, data: {confirm: t(:prompt_to_delete)} %></td>
+          <td><%= link_to (fa_icon 'eye').to_s, store_path(store) %>
+            <%= link_to (fa_icon 'pencil').to_s, edit_store_path(store) %>
+            <%= link_to (fa_icon 'trash').to_s, store_path(store), method: :delete, data: {confirm: t(:prompt_to_delete)} %></td>
         </tr>
     <% end %>
     </tbody>
@@ -30,8 +30,8 @@
   </table>
 </div>
 
-  <%= paginate @stores %>
+<%= paginate @stores %>
 
 <% content_for :footer_buttons do %>
-<%= link_to raw(t('btn_add', model: Store.model_name.human)), new_store_path, :class => 'btn btn-primary' %>
+    <%= link_to raw(t('btn_add', model: Store.model_name.human)), new_store_path, :class => 'btn btn-primary' %>
 <% end %>
