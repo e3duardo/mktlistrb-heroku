@@ -11,10 +11,10 @@ class ListsController < ApplicationController
 
     render :json => @list , :include => :items
 
-    #respond_to do |format|
-      #format.html
-      #format.json { render :json => @list , :include => :items }
-    #end
+    respond_to do |format|
+      format.html
+      format.json { render :json => @list , :include => :items }
+    end
   end
 
   def new
