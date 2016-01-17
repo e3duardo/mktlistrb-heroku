@@ -7,10 +7,13 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-
-    @items = Item.all
-
     @item = Item.new
+
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => List.find(params[:id]) , :include => :items }
+    end
   end
 
   def new

@@ -6,15 +6,15 @@
     <tr>
       <th width="45%"><%= Product.human_attribute_name(:name) %></th>
       <th width="55%"><%= Product.human_attribute_name(:alias) %></th>
-      <th></th>
+      <th width="1px" colspan="3"></th>
     </tr>
     <% @products.each do |product| %>
         <tr>
           <td><%= product.name %></td>
           <td><%= product.alias %></td>
-          <td><%= link_to (fa_icon 'eye').to_s, product_path(product) %>
-            <%= link_to (fa_icon 'pencil').to_s, edit_product_path(product) %>
-            <%= link_to (fa_icon 'trash').to_s, product_path(product), method: :delete, data: {confirm: t(:prompt_to_delete)} %></td>
+          <td><%= link_to (fa_icon 'eye').to_s, product_path(product) %></td>
+          <td><%= link_to (fa_icon 'pencil').to_s, edit_product_path(product) %></td>
+          <td><%= link_to (fa_icon 'trash').to_s, product_path(product), method: :delete, data: {confirm: t(:prompt_to_delete)} %></td>
         </tr>
     <% end %>
     </tbody>
@@ -32,7 +32,8 @@
 
 <div class="fixed-table-pagination">
   <div class="pull-left pagination-detail">
-    <span class="pagination-info">Showing 1 to 10 of 800 rows</span>
+    <span class="pagination-info">Showing <%= @products.current_page %> to <%= @products.total_pages %>
+      of <%= @products.total_count %> rows</span>
   </div>
   <div class="pull-right pagination">
     <%= paginate @products %>

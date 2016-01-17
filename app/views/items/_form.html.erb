@@ -17,8 +17,9 @@
 
     <div class="row add-row">
       <div class="col-xs-12 col-sm-3">
-        <%= f.label :product, :class => 'control-label' %>
+        <%= f.hidden_field :list_id, :value => @list.id %>
 
+        <%= f.label :product, :class => 'control-label' %>
         <div class="input-group">
           <%= f.autocomplete_field :product, autocomplete_product_name_items_path(:store_id => @list.store.id), :update_elements => {:price => '#item_price'}, :class => 'form-control target_change', :required => true, :placeholder => Item.human_attribute_name(:product) %>
           <span class="input-group-btn">
