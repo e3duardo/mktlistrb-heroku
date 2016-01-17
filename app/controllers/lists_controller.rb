@@ -9,7 +9,6 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @item = Item.new
 
-
     respond_to do |format|
       format.html
       format.json { render :json => List.find(params[:id]) , :include => :items }
