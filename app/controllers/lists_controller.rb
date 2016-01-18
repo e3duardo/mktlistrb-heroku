@@ -11,7 +11,7 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render :json => @list , :include => :items }
+      format.json { render :json => @list , :include => [:items, :store] }
     end
   end
 
