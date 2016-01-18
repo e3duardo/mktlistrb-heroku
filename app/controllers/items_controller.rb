@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  protect_from_forgery :except => :create
+
   autocomplete :product, :name,
                :extra_data => [:id, :alias, :price],
                # :scopes => [:value_from_price],
@@ -13,6 +15,7 @@ class ItemsController < ApplicationController
     if not Item.find_by_product(params[:item][:product]).nil?
       #TODO: criar validacao na view quando o produto já esta na lista
     else
+      puts(list_params)
       @item = Item.create(list_params)
     end
     redirect_to :back
