@@ -18,7 +18,8 @@ class ItemsController < ApplicationController
       puts(list_params)
       @item = Item.create(list_params)
     end
-    redirect_to :back
+    # redirect_to :back
+    render js:''
   end
 
   def update
