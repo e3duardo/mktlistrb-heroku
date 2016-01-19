@@ -15,8 +15,9 @@ class ItemsController < ApplicationController
     if not Item.find_by_product(params[:item][:product]).nil?
       #TODO: criar validacao na view quando o produto já esta na lista
     else
-      puts(list_params)
-      @item = Item.create(list_params)
+      @item = Item.new(list_params)
+      @item.total = @item.price * @item.amount;
+      @item.save();
     end
     # redirect_to :back
     render js:''
@@ -24,13 +25,11 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-
-    @item.update(list_params)
-
+    #@item.update(list_params)
     @item.total = params[:item][:amount].to_f * params[:item][:price].to_f
-
     @item.update(list_params)
-    redirect_to :back
+    #redirect_to :back
+    render js:''
   end
 
   def destroy
@@ -43,6 +42,6 @@ class ItemsController < ApplicationController
 
   private
   def list_params
-    params.require(:item).permit(:product, :list_id, :price, :amount, :total)
+    params.require(:item).permit(:product, :list_id, :price, :amount)
   end
 end
